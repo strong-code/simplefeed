@@ -32,6 +32,7 @@ gem 'annotate'
 gem 'ejs'
 gem 'serialize_json-rails', '~> 0.0.1'
 gem 'backbone-on-rails'
+gem 'bootstrap-sass'
 
 
 group :development do
