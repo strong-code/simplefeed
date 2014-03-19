@@ -1,0 +1,29 @@
+<h1>Sign In</h1>
+<form action="<%= session_url %>" method="POST">
+
+  <%= csrf_token %>
+
+  <label>Username
+    <input type="text" id="username" name="user[username]" value="<%= @user.username %>">
+  <label>
+
+  <br>
+
+  <label>Password
+    <input type="password" id="password" name="user[password]" value="<%= @user.password %>">
+  <label>
+
+  <p><input type="submit" id="sign-in" value="Sign In"></p>
+  <p><button id="demo-user">Demo User</button></p>
+</form>
+
+<%= link_to "Create an account", new_user_url %>
+
+<script>
+$('#demo-user').on("click", function(event) {
+  event.preventDefault();
+  $('#username').val('TestUser');
+  $('#password').val('password');
+  $('#sign-in').click();
+})
+</script>

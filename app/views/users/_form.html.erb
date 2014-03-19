@@ -1,0 +1,19 @@
+<% action = (@user.persisted? ? user_url(@user) : users_url) %>
+<% button_text = (@user.persisted? ? "Log In" : "Create Account") %>
+
+<form action="<%= action %>" method="POST">
+
+  <%= csrf_token %>
+
+  <label>Username
+    <input type="text" name="user[username]" value="<%= @user.username %>">
+  <label>
+
+  <br>
+
+  <label>Password
+    <input type="password" name="user[password]" value="<%= @user.password %>">
+  <label>
+
+  <p><input type="submit" value="<%= button_text %>"></p>
+</form>
