@@ -12,10 +12,13 @@
 
 class User < ActiveRecord::Base
   validates :username, :password_hash, presence: true
+  validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true}
   #before_validation :ensure_session_token
 
   attr_reader :password
+
+  has_many :feeds
 
   def reset_session_token!
     self.session_token = SecureRandom.urlsafe_base64

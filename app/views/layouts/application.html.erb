@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SimpleFeed</title>
+  <meta charset="utf-8">
+  <title>SimpleFeed :^)</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="row">
 
-<%= yield %>
+    <% if flash[:errors] %>
+      <div class="col-xs-9 col-xs-offset-4">
+        <% flash[:errors].each do |error| %>
+            <span class="alert alert-warning error-msg"><span class="glyphicon glyphicon-exclamation-sign"></span> <%= error %></span>
+        <% end %>
+      </div>
+    <% end %>
 
+    <%= yield %>
+  </div>
 </body>
 </html>

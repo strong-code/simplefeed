@@ -1,4 +1,26 @@
-<h1>Hello, <%= @user.username%></h1>
+<div class='col-xs-5 col-xs-offset-1'>
+  <h1>Hello, <%= @user.username%></h1>
+</div>
 
+  <div class="row"></div>
 
-<%= link_to "Log Out", session_url, method: :delete%>
+  <div class='col-xs-3 col-xs-offset-1' id='add-new-feed'>
+    <label>Add New Feed (url)
+      <input type="text" class="form-control">
+    </label>
+    <button class="btn btn-primary">
+  </div>
+
+  <% @feeds.each do |feed| %>
+    <div class="col-xs-6" id="current-feed-entries">
+      <% feed.entries.each do |entry| %>
+        <li><%= CGI.unescapeHTML(entry.title) %></li>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div clas="row">
+    <footer class='col-xs-4'>
+      <%= link_to "Log Out", session_url, method: :delete%>
+    </footer>
+  </div>

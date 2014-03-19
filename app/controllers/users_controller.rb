@@ -18,8 +18,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    render :show
+    if !logged_in?
+      flash[:errors] = ["You must be logged in to view that page!"]
+      redirect_to new_user_url
+    else
+      @user = current_user
+      @feeds = @user.feeds
+      @feeds.each { |f| f.reload }
+      render :show
+    end
   end
 
   def update

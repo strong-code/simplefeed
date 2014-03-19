@@ -1,23 +1,32 @@
-<h1>Sign In</h1>
-<form action="<%= session_url %>" method="POST">
+<div class="col-xs-4 col-xs-offset-4">
+  <h1>Sign In</h1>
+    <form action="<%= session_url %>" method="POST">
+      <div class="form-group">
 
-  <%= csrf_token %>
+      <%= csrf_token %>
 
-  <label>Username
-    <input type="text" id="username" name="user[username]" value="<%= @user.username %>">
-  <label>
+      <label>Username
+        <input class="form-control" type="text" id="username" name="user[username]" value="<%= @user.username %>">
+      <label>
 
-  <br>
+      <br>
 
-  <label>Password
-    <input type="password" id="password" name="user[password]" value="<%= @user.password %>">
-  <label>
+      <label>Password
+        <input class="form-control" type="password" id="password" name="user[password]" value="<%= @user.password %>">
+      <label>
 
-  <p><input type="submit" id="sign-in" value="Sign In"></p>
-  <p><button id="demo-user">Demo User</button></p>
-</form>
+      <br>
 
-<%= link_to "Create an account", new_user_url %>
+      <button type="submit" id="sign-in" class="btn btn-primary">Sign In</button>
+
+      <button id="demo-user" class="btn btn-primary">Demo User</button>
+      </div>
+    </form>
+
+  Don't have an account? <%= link_to "Create one", new_user_url %>
+
+</div>
+
 
 <script>
 $('#demo-user').on("click", function(event) {

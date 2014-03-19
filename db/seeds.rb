@@ -5,3 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+testuser = User.create(username: "TestUser", password: "password")
+
+testuser.feeds.create(url: "https://news.ycombinator.com/rss", title: "Hacker News RSS")
