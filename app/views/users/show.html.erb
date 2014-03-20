@@ -41,7 +41,7 @@
     <% @feeds.each do |feed| %>
       <h3><%= feed.title %></h3>
         <% feed.entries.each do |entry| %>
-          <div><a href="<%= entry.link %>"><%= entry.title %></a></div>
+          <div><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></div>
         <% end %>
     <% end %>
   </div>
