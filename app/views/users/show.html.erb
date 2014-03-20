@@ -20,7 +20,7 @@
     <br>
     <div id="feed-list">
       <ul>
-        <% @feeds.each do |feed| %>
+        <% @feeds.reverse.each do |feed| %>
           <div class="feed-list-entry">
               <h4 class="feed-list-title"><%= feed.title %>
                 <a href="<%= user_url(@user) %>"><span data-id="<%= feed.id %>" class="glyphicon glyphicon-refresh"></span></a>
@@ -38,9 +38,9 @@
   </div>
 
   <div class="col-xs-6" id="current-feed-entries">
-    <% @feeds.each do |feed| %>
+    <% @feeds.reverse.each do |feed| %>
       <h3><%= feed.title %></h3>
-        <% feed.entries.each do |entry| %>
+        <% feed.entries.reverse.each do |entry| %>
           <div><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></div>
         <% end %>
     <% end %>
