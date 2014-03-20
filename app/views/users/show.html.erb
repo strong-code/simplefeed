@@ -5,7 +5,7 @@
   <header class="row"></header>
 
   <div class='col-xs-5' id='main-sidebar'>
-    <form action="<%= user_feeds_url(@user) %>" method="POST">
+    <form action="<%= user_feeds_url(@user) %>" method="POST" id="new-feed-form">
         <div class="input-group">
           <%= csrf_token %>
           <input type="text" class="form-control" name="feed[url]" placeholder="yourfeedurl.com/rss">
