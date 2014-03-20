@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     else
       @user = current_user
       @feeds = @user.feeds
-      @feeds.each { |f| f.reload }
+      @feeds.each { |f| f.reload(@user.id) }
       #t @feeds.each { |f| f.clean_for_rendering }
       render :show
     end

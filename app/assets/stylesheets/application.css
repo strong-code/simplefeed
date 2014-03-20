@@ -32,11 +32,7 @@ div#current-feed-entries {
   cursor: pointer;
 }
 
-/*div#main-sidebar {
-  margin-left: 2%;
-}*/
-
-form#new-feed-textbox {
+form#new-feed-form {
   margin-left: 8%;
 }
 

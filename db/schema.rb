@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140319204610) do
     t.datetime "updated_at"
   end
 
-  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true, using: :btree
+  add_index "feeds", ["url"], name: "index_feeds_on_url", using: :btree
 
   create_table "users", force: true do |t|
     t.text     "username",      null: false

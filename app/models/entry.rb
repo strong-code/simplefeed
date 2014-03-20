@@ -6,10 +6,10 @@
 #  title           :text             not null
 #  link            :text             not null
 #  feed_id         :integer          not null
-#  pubdate         :string(255)
+#  pubdate         :text
 #  description     :text
-#  comments_url    :string(255)
-#  category        :string(255)
+#  comments_url    :text
+#  category        :text
 #  content_encoded :text
 #  created_at      :datetime
 #  updated_at      :datetime
