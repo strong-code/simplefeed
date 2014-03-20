@@ -2,13 +2,13 @@
   <h1>Hello, <%= @user.username%></h1>
 </div>
 
-  <div class="row"></div>
+  <header class="row"></header>
 
-  <div class='col-xs-3 col-xs-offset-1' id='add-new-feed'>
+  <div class='col-xs-5' id='main-sidebar'>
     <form action="<%= user_feeds_url(@user) %>" method="POST">
         <div class="input-group">
           <%= csrf_token %>
-          <input type="text" class="form-control" name="feed[url]" placeholder="http://feedurl.com/rss">
+          <input type="text" class="form-control" name="feed[url]" placeholder="yourfeedurl.com/rss">
           <span class="input-group-btn">
             <button type="submit" class="btn btn-primary">
               <span class="glyphicon glyphicon-plus-sign"></span>  Add Feed
@@ -18,25 +18,32 @@
     </form>
 
     <br>
-    <div id="current-feeds">
+    <div id="feed-list">
       <ul>
         <% @feeds.each do |feed| %>
-          <li>
-            <%= feed.title %>
-            <a href="<%= user_url(@user) %>"><span data-id="<%= feed.id %>" class="glyphicon glyphicon-refresh"></span></a>
-            <a><span data-id="<%= feed.id %>" class="glyphicon glyphicon-trash"></span></a>
-          </li>
+          <div class="feed-list-entry">
+              <h4 class="feed-list-title"><%= feed.title %>
+                <a href="<%= user_url(@user) %>"><span data-id="<%= feed.id %>" class="glyphicon glyphicon-refresh"></span></a>
+                <a><span data-id="<%= feed.id %>" class="glyphicon glyphicon-trash"></span></a>
+              </h4>
+              <%= feed.description[0..100]%><% if feed.description.length > 100 %>... <%end%>
+          </div>
+          <br>
         <% end %>
       </ul>
     </div>
 
   </div>
 
-  <div class="col-xs-6 col-xs-offset-1" id="current-feed-entries">
+  <div class="col-xs-6" id="current-feed-entries">
     <% @feeds.each do |feed| %>
-      <li><h3><%= feed.title %></h3></li>
+      <h3><%= feed.title %></h3>
         <% feed.entries.each do |entry| %>
-          <li><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></li>
+          <% if entry.content_encoded %>
+            <div><%= entry.content_encoded.html_safe %></div>
+          <% else %>
+            <div><a href="<%= entry.link %>"><%= entry.title %></a></div>
+          <% end %>
         <% end %>
     <% end %>
   </div>

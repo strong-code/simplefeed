@@ -2,12 +2,13 @@
 #
 # Table name: feeds
 #
-#  id         :integer          not null, primary key
-#  url        :string(255)      not null
-#  title      :string(255)      not null
-#  user_id    :integer          not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  url         :string(255)      not null
+#  title       :string(255)      not null
+#  user_id     :integer          not null
+#  created_at  :datetime
+#  updated_at  :datetime
+#  description :text
 #
 
 require 'open-uri'
@@ -50,6 +51,19 @@ class Feed < ActiveRecord::Base
 
     self.touch #update the timestamp in db after we do this
     self
+  end
+
+  def clean_for_rendering
+    self.entries.each do |entry|
+      entry.attributes.each do |k,v|
+        if entry.attributes[k].is_a?(String)
+          entry.attributes[k] = v.force_encoding("ASCII-8BIT")
+        end
+      end
+      entry.save
+    end
+
+    self.save
   end
 
 

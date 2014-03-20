@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320170706) do
+ActiveRecord::Schema.define(version: 20140320183247) do
 
   create_table "entries", force: true do |t|
-    t.string   "title",        null: false
-    t.string   "link",         null: false
-    t.integer  "feed_id",      null: false
+    t.string   "title",           null: false
+    t.string   "link",            null: false
+    t.integer  "feed_id",         null: false
     t.string   "pubdate"
     t.string   "description"
     t.string   "comments_url"
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "content_encoded"
   end
 
   create_table "feeds", force: true do |t|

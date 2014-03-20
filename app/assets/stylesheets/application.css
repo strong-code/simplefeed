@@ -32,6 +32,23 @@ div#current-feed-entries {
   cursor: pointer;
 }
 
+div#main-sidebar {
+  margin-left: 2%;
+}
+
+/*div#feed-list {
+  border-left: 2px solid;
+}*/
+
+div.feed-list-entry {
+  padding-left: 15px;
+  border-left: 2px solid;
+}
+
+h4.feed-list-title {
+  font-weight: bold;
+}
+
 .spin {
   -webkit-animation: spin 2s infinite linear;
   -moz-animation: spin 2s infinite linear;

@@ -18,6 +18,7 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
+#encoding utf-8
 
 en:
   hello: "Hello world"

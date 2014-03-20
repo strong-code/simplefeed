@@ -22,7 +22,6 @@ class FeedsController < ApplicationController
     feed.destroy();
     @user = current_user
     @feeds = @user.feeds
-    @feeds.each { |f| f.reload }
     redirect_to user_url(@user)
   end
 
