@@ -11,28 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320201334) do
+ActiveRecord::Schema.define(version: 20140319204610) do
 
   create_table "entries", force: true do |t|
-    t.string   "title",                       null: false
-    t.string   "link",                        null: false
-    t.integer  "feed_id",                     null: false
+    t.text     "title",           null: false
+    t.text     "link",            null: false
+    t.integer  "feed_id",         null: false
     t.string   "pubdate"
-    t.text     "description",     limit: 255
+    t.text     "description"
     t.string   "comments_url"
     t.string   "category"
+    t.text     "content_encoded"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content_encoded"
   end
 
   create_table "feeds", force: true do |t|
-    t.string   "url",         null: false
+    t.text     "url",         null: false
     t.string   "title",       null: false
     t.integer  "user_id",     null: false
+    t.text     "description", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "description"
   end
 
   add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true

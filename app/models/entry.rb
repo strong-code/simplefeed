@@ -3,16 +3,16 @@
 # Table name: entries
 #
 #  id              :integer          not null, primary key
-#  title           :string(255)      not null
-#  link            :string(255)      not null
+#  title           :text             not null
+#  link            :text             not null
 #  feed_id         :integer          not null
 #  pubdate         :string(255)
-#  description     :string(255)
+#  description     :text
 #  comments_url    :string(255)
 #  category        :string(255)
+#  content_encoded :text
 #  created_at      :datetime
 #  updated_at      :datetime
-#  content_encoded :string(255)
 #
 
 class Entry < ActiveRecord::Base

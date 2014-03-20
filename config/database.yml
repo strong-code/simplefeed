@@ -25,3 +25,4 @@ production:
   pool: 5
   timeout: 5000
   encoding: utf8
+  reconnect: true
