@@ -17,13 +17,11 @@
 
 class Entry < ActiveRecord::Base
   validates :title, :link, :feed_id, presence: true
-  validates :link, uniqueness: true
 
   belongs_to :feed
 
   def self.create_from_JSON(entryData, feed)
     clean_encode(entryData)
-    p entryData
 
     Entry.create({
      title: entryData[:title],

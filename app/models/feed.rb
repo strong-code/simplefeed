@@ -39,7 +39,7 @@ class Feed < ActiveRecord::Base
     end
   end
 
-  #reload feed and fetch new entries
+  #reload feed and fetch new entries only for current user
   def reload(user_id)
     feed_data = SimpleRSS.parse(open(self.url))
     existing_entry_links = Feed.where("user_id = ?", user_id).pluck(:url).sort
