@@ -28,7 +28,7 @@ class Feed < ActiveRecord::Base
         return feed
       else
         feed_data = SimpleRSS.parse(open(url))
-        feed = Feed.create(url: url, title: feed_data.title, user_id: user_id)
+        feed = Feed.create(url: url, title: feed_data.title, user_id: user_id, description: feed_data.description)
         feed_data.entries.each { |en| Entry.create_from_JSON(en, feed) }
         return feed
       end
