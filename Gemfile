@@ -34,6 +34,7 @@ gem 'serialize_json-rails', '~> 0.0.1'
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'simple-rss'
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'better_errors'
