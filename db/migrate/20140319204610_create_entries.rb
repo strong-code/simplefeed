@@ -4,9 +4,9 @@ class CreateEntries < ActiveRecord::Migration
       t.text :title, null: false
       t.text :link, null: false
       t.integer :feed_id, null: false
-      t.string :pubdate
+      t.text :pubdate
       t.text :description
-      t.string :comments_url
+      t.text :comments_url
       t.string :category
       t.text :content_encoded
 

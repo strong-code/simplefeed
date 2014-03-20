@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20140319204610) do
     t.text     "title",           null: false
     t.text     "link",            null: false
     t.integer  "feed_id",         null: false
-    t.string   "pubdate"
+    t.text     "pubdate"
     t.text     "description"
-    t.string   "comments_url"
+    t.text     "comments_url"
     t.string   "category"
     t.text     "content_encoded"
     t.datetime "created_at"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140319204610) do
 
   create_table "feeds", force: true do |t|
     t.text     "url",         null: false
-    t.string   "title",       null: false
+    t.text     "title",       null: false
     t.integer  "user_id",     null: false
     t.text     "description", null: false
     t.datetime "created_at"
