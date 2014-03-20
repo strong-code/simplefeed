@@ -11,6 +11,12 @@ class FeedsController < ApplicationController
     end
   end
 
+  def update
+    feed = current_user.feeds.find_by_id(params[:id])
+    feed.reload
+    redirect_to user_url(current_user)
+  end
+
   def feed_params
     params.require(:feed).permit(:title, :url, :user_id)
   end

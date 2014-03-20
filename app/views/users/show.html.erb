@@ -16,20 +16,47 @@
           </span>
       </div>
     </form>
+
+    <br>
+    <div id="current-feeds">
+      <ul>
+        <% @feeds.each do |feed| %>
+          <li>
+            <%= feed.title %>
+            <a href="<%= user_url(@user) %>"><span data-id="<%= feed.id %>" class="glyphicon glyphicon-refresh"></span></a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+
   </div>
 
-  <% @feeds.each do |feed| %>
-    <li><%= feed.title %></li>
-    <!-- <div class="col-xs-6 col-xs-offset-1" id="current-feed-entries">
-      <button class="btn btn-default">Refresh</button>
-      <% feed.entries.each do |entry| %>
-        <li><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></li>
-      <% end %>
-    </div> -->
-  <% end %>
+  <div class="col-xs-6 col-xs-offset-1" id="current-feed-entries">
+    <% @feeds.each do |feed| %>
+      <li><h3><%= feed.title %></h3></li>
+        <% feed.entries.each do |entry| %>
+          <li><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></li>
+        <% end %>
+    <% end %>
+  </div>
 
   <div clas="row">
     <footer class='col-xs-4 col-xs-offset-1'>
       <%= link_to "Log Out", session_url, method: :delete%>
     </footer>
   </div>
+
+<script>
+  $(function() {
+    $('.glyphicon-refresh').on('click', function(e) {
+      var feedId = $(e.currentTarget).data('id');
+      $(e.currentTarget).toggleClass("spin");
+      // var url = "/users/"+<%=@user.id%>+"/feeds/"+feedId;
+//       debugger
+//       $.ajax({
+//         url: url,
+//         method: "PATCH"
+//       });
+    })
+  });
+</script>
