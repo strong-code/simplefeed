@@ -7,7 +7,7 @@ class CreateEntries < ActiveRecord::Migration
       t.text :pubdate
       t.text :description
       t.text :comments_url
-      t.string :category
+      t.text :category
       t.text :content_encoded
 
       t.timestamps

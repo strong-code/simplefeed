@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140319204610) do
     t.text     "pubdate"
     t.text     "description"
     t.text     "comments_url"
-    t.string   "category"
+    t.text     "category"
     t.text     "content_encoded"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 20140319204610) do
   add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true
 
   create_table "users", force: true do |t|
-    t.string   "username",      null: false
-    t.string   "password_hash", null: false
-    t.string   "session_token"
+    t.text     "username",      null: false
+    t.text     "password_hash", null: false
+    t.text     "session_token"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
