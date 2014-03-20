@@ -17,6 +17,15 @@ class FeedsController < ApplicationController
     redirect_to user_url(current_user)
   end
 
+  def destroy
+    feed = current_user.feeds.find_by_id(params[:id]);
+    feed.destroy();
+    @user = current_user
+    @feeds = @user.feeds
+    @feeds.each { |f| f.reload }
+    redirect_to user_url(@user)
+  end
+
   def feed_params
     params.require(:feed).permit(:title, :url, :user_id)
   end
