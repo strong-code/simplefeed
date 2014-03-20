@@ -26,7 +26,9 @@
                 <a href="<%= user_url(@user) %>"><span data-id="<%= feed.id %>" class="glyphicon glyphicon-refresh"></span></a>
                 <a><span data-id="<%= feed.id %>" class="glyphicon glyphicon-trash"></span></a>
               </h4>
-              <%= feed.description[0..100]%><% if feed.description.length > 100 %>... <%end%>
+              <% if feed.description %>
+                <%= feed.description[0..100]%><% if feed.description.length > 100 %>... <%end%>
+              <% end %>
           </div>
           <br>
         <% end %>
@@ -41,7 +43,7 @@
         <% feed.entries.each do |entry| %>
           <% if entry.content_encoded %>
             <div><%= entry.content_encoded.html_safe %></div>
-          <% else %>
+          <% else%>
             <div><a href="<%= entry.link %>"><%= entry.title %></a></div>
           <% end %>
         <% end %>
