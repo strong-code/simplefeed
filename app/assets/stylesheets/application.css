@@ -36,10 +36,6 @@ div#main-sidebar {
   margin-left: 2%;
 }
 
-/*div#feed-list {
-  border-left: 2px solid;
-}*/
-
 div.feed-list-entry {
   padding-left: 15px;
   border-left: 2px solid;
