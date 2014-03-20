@@ -41,11 +41,7 @@
     <% @feeds.each do |feed| %>
       <h3><%= feed.title %></h3>
         <% feed.entries.each do |entry| %>
-          <% if entry.content_encoded %>
-            <div><%= entry.content_encoded.html_safe %></div>
-          <% else%>
-            <div><a href="<%= entry.link %>"><%= entry.title %></a></div>
-          <% end %>
+          <div><a href="<%= entry.link %>"><%= entry.title %></a></div>
         <% end %>
     <% end %>
   </div>

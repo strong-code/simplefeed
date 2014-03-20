@@ -39,7 +39,7 @@ gem 'rails_12factor', group: :production
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'sqlite3'
+  gem 'pg'
 end
 
 group :doc do

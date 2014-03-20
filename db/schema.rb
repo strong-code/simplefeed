@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140319204610) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "entries", force: true do |t|
     t.text     "title",           null: false
     t.text     "link",            null: false
@@ -35,7 +38,7 @@ ActiveRecord::Schema.define(version: 20140319204610) do
     t.datetime "updated_at"
   end
 
-  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true
+  add_index "feeds", ["url"], name: "index_feeds_on_url", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.text     "username",      null: false
