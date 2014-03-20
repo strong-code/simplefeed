@@ -5,22 +5,31 @@
   <div class="row"></div>
 
   <div class='col-xs-3 col-xs-offset-1' id='add-new-feed'>
-    <label>Add New Feed (url)
-      <input type="text" class="form-control">
-    </label>
-    <button class="btn btn-primary">
+    <form action="<%= user_feeds_url(@user) %>" method="POST">
+        <div class="input-group">
+          <%= csrf_token %>
+          <input type="text" class="form-control" name="feed[url]" placeholder="http://feedurl.com/rss">
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary">
+              <span class="glyphicon glyphicon-plus-sign"></span>  Add Feed
+            </button>
+          </span>
+      </div>
+    </form>
   </div>
 
   <% @feeds.each do |feed| %>
-    <div class="col-xs-6" id="current-feed-entries">
+    <li><%= feed.title %></li>
+    <!-- <div class="col-xs-6 col-xs-offset-1" id="current-feed-entries">
+      <button class="btn btn-default">Refresh</button>
       <% feed.entries.each do |entry| %>
-        <li><%= CGI.unescapeHTML(entry.title) %></li>
+        <li><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></li>
       <% end %>
-    </div>
+    </div> -->
   <% end %>
 
   <div clas="row">
-    <footer class='col-xs-4'>
+    <footer class='col-xs-4 col-xs-offset-1'>
       <%= link_to "Log Out", session_url, method: :delete%>
     </footer>
   </div>

@@ -20,15 +20,20 @@ class Feed < ActiveRecord::Base
   has_many :entries, :dependent => :destroy
 
   #find an existing feed in our database by url (which is uniq)
-  def self.find_or_create(url)
+  def self.find_or_create(url, user_id)
     feed = Feed.find_by_url(url)
 
-    if feed
-      return feed
-    else
-      feed_data = SimpleRSS.parse(open(url))
-      feed = Feed.create(url: url, title: feed_data.title)
-      feed_data.entries.each { |en| Entry.create_from_JSON(en, feed) }
+    begin
+      if feed
+        return feed
+      else
+        feed_data = SimpleRSS.parse(open(url))
+        feed = Feed.create(url: url, title: feed_data.title, user_id: user_id)
+        feed_data.entries.each { |en| Entry.create_from_JSON(en, feed) }
+        return feed
+      end
+    rescue => e
+      return nil
     end
   end
 
