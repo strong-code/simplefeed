@@ -19,12 +19,8 @@ class UsersController < ApplicationController
 
   def show
     if !logged_in?
-      puts "------------------"
-      puts "got here"
-      puts "------------------"
-      flash.now[:errors] = ["You must be logged in to view that page!"]
-      #redirect_to new_user_url
-      render :new
+      flash[:errors] = ["You must be logged in to view that!"]
+      redirect_to "/"
     else
       @user = current_user
       @feeds = @user.feeds
