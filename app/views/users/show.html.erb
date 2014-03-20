@@ -24,10 +24,10 @@
           <div class="feed-list-entry">
               <h4 class="feed-list-title"><%= feed.title %>
                 <a href="<%= user_url(@user) %>"><span data-id="<%= feed.id %>" class="glyphicon glyphicon-refresh"></span></a>
-                <a><span data-id="<%= feed.id %>" class="glyphicon glyphicon-trash"></span></a>
+                <a data-method="delete" href="<%= user_feed_url(@user, feed) %>"><span data-id="<%= feed.id %>" class="glyphicon glyphicon-trash"></span></a>
               </h4>
               <% if feed.description %>
-                <%= feed.description[0..100]%><% if feed.description.length > 100 %>... <%end%>
+                <%= feed.description[0..80]%><% if feed.description.length > 80 %>... <%end%>
               <% end %>
           </div>
           <br>
@@ -54,29 +54,10 @@
 
 
 <script>
-
-/*
-*This is just something hack-ish and acting as a placeholder so the icons can have an
-*actionable effect until backbone is implemented and all this is done properly
-*with ajax requests
-*/
-
   $(function() {
     $('.glyphicon-refresh').on('click', function(e) {
       var feedId = $(e.currentTarget).data('id');
       $(e.currentTarget).toggleClass("spin");
-      // var url = "/users/"+<%=@user.id%>+"/feeds/"+feedId;
-//       debugger
-//       $.ajax({
-//         url: url,
-//         method: "PATCH"
-//       });
-    });
-
-    $('.glyphicon-trash').on("click", function(e) {
-      var feedId = $(e.currentTarget).data('id');
-      var url = "/users/"+<%=@user.id%>+"/feeds/"+feedId;
-      window.location(url);
     });
   });
 </script>
