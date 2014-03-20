@@ -34,12 +34,14 @@ gem 'serialize_json-rails', '~> 0.0.1'
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'simple-rss'
-gem 'rails_12factor', group: :production
+
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'pg'
 end
 
 group :doc do
