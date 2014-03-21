@@ -5,17 +5,11 @@ SimpleFeed.Routers.Router = Backbone.Router.extend({
     this.$menu = $menu;
   },
 
-  // routes: {
-  //   "" : "index"
-  // },
-
-  index: function() {
-
+  routes: {
+    "" : "index"
   },
 
-  _swapView: function(view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
-    this.$rootEl.html(view.render().$el);
+  index: function() {
+    alert("got here");
   }
-});
+})

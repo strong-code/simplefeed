@@ -13,7 +13,7 @@ class FeedsController < ApplicationController
 
   def update
     feed = current_user.feeds.find_by_id(params[:id])
-    feed.reload(params[:id])
+    feed.reload(current_user.id)
     redirect_to user_url(current_user)
   end
 

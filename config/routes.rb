@@ -1,7 +1,6 @@
 SimpleFeed::Application.routes.draw do
   root to: "sessions#new"
-  resources :users do
-    resources :feeds
-  end
+  resources :users
+  resources :feeds
   resource :session
 end
