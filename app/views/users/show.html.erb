@@ -37,14 +37,23 @@
 
   </div>
 
-  <div class="col-xs-6" id="current-feed-entries">
-    <% @feeds.reverse.each do |feed| %>
-      <h3><%= feed.title %></h3>
-        <% feed.entries.reverse.each do |entry| %>
-          <div><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></div>
-        <% end %>
-    <% end %>
-  </div>
+  <% if @feeds.empty? %>
+    <div class="col-xs-6">
+      <div class="alert alert-info">
+        <span class="glyphicon glyphicon-bell"></span>
+        It seems you don't have any feeds yet :( Try adding one by supplying a valid RSS/Atom URL to get started.
+      </div>
+    </div>
+  <% else %>
+    <div class="col-xs-6" id="current-feed-entries">
+      <% @feeds.reverse.each do |feed| %>
+        <h3><%= feed.title %></h3>
+          <% feed.entries.reverse.each do |entry| %>
+            <div><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></div>
+          <% end %>
+      <% end %>
+    </div>
+  <% end %>
 
   <div class="row"></div>
 
@@ -55,7 +64,7 @@
 
 <script>
   $(function() {
-    $('.glyphicon-refresh, .glyphicon-trash, #submit-new-feed-btn').on('click', function(e) {
+    $('.glyphicon-refresh, .glyphicon-trash').on('click', function(e) {
       $(e.currentTarget).toggleClass("spin");
     });
     $('.glyphicon-trash').on('click', function(e) {
@@ -63,6 +72,7 @@
       $(e.currentTarget).toggleClass("glyphicon-cog");
     });
     $('#submit-new-feed-btn').on('click', function() {
+      $('#submit-new-feed-icon').toggleClass("spin");
       $('#submit-new-feed-icon').toggleClass("glyphicon-plus-sign");
       $('#submit-new-feed-icon').toggleClass("glyphicon-cog");
     })
