@@ -55,19 +55,16 @@
 
 <script>
   $(function() {
-    $('.glyphicon-refresh').on('click', function(e) {
-      // var feedId = $(e.currentTarget).data('id');
+    $('.glyphicon-refresh, .glyphicon-trash, #submit-new-feed-btn').on('click', function(e) {
       $(e.currentTarget).toggleClass("spin");
     });
     $('.glyphicon-trash').on('click', function(e) {
       $(e.currentTarget).toggleClass("glyphicon-trash");
       $(e.currentTarget).toggleClass("glyphicon-cog");
-      $(e.currentTarget).toggleClass("spin");
     });
     $('#submit-new-feed-btn').on('click', function() {
       $('#submit-new-feed-icon').toggleClass("glyphicon-plus-sign");
       $('#submit-new-feed-icon').toggleClass("glyphicon-cog");
-      $('#submit-new-feed-icon').toggleClass("spin");
     })
   });
 </script>

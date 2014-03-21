@@ -14,14 +14,23 @@
  */
 @import "bootstrap";
 
+body {
+  height: 100%;
+}
+
 span.error-msg {
   color: red;
 }
 
 div#current-feed-entries {
   border-left: 2px solid;
-  height: 400px;
+  height: 80vh;
   overflow: scroll;
+}
+
+span#current-feed-entries-header {
+  position: relative;
+  top: 0;
 }
 
 div#current-feed-entries::-webkit-scrollbar {
