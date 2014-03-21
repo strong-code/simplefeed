@@ -1,5 +1,15 @@
 class FeedsController < ApplicationController
 
+  def index
+    @user = current_user
+    @user.feeds.each { |f| f.reload(@user.id) }
+
+    respond_to do |format|
+      format.html { redirect_to user_url(@user) }
+      format.json { render :json => @user.as_json( :include => { :feeds => { :include => { :entries => {}}}} )}
+    end
+  end
+
   def create
     feed = Feed.find_or_create(params[:feed][:url], current_user.id)
 
@@ -12,9 +22,10 @@ class FeedsController < ApplicationController
   end
 
   def update
-    feed = current_user.feeds.find_by_id(params[:id])
-    feed.reload(current_user.id)
-    redirect_to user_url(current_user)
+    user = current_user
+    feed = user.feeds.find_by_id(params[:id])
+    feed.reload(user.id)
+    redirect_to user_url(user)
   end
 
   def destroy
