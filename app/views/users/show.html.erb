@@ -10,8 +10,8 @@
           <%= csrf_token %>
           <input type="text" class="form-control" name="feed[url]" placeholder="yourfeedurl.com/rss">
           <span class="input-group-btn">
-            <button type="submit" class="btn btn-primary">
-              <span class="glyphicon glyphicon-plus-sign"></span>  Add Feed
+            <button type="submit" class="btn btn-primary" id="submit-new-feed-btn">
+              <span class="glyphicon glyphicon-plus-sign" id="submit-new-feed-icon"></span>  Add Feed
             </button>
           </span>
       </div>
@@ -56,8 +56,18 @@
 <script>
   $(function() {
     $('.glyphicon-refresh').on('click', function(e) {
-      var feedId = $(e.currentTarget).data('id');
+      // var feedId = $(e.currentTarget).data('id');
       $(e.currentTarget).toggleClass("spin");
     });
+    $('.glyphicon-trash').on('click', function(e) {
+      $(e.currentTarget).toggleClass("glyphicon-trash");
+      $(e.currentTarget).toggleClass("glyphicon-cog");
+      $(e.currentTarget).toggleClass("spin");
+    });
+    $('#submit-new-feed-btn').on('click', function() {
+      $('#submit-new-feed-icon').toggleClass("glyphicon-plus-sign");
+      $('#submit-new-feed-icon').toggleClass("glyphicon-cog");
+      $('#submit-new-feed-icon').toggleClass("spin");
+    })
   });
 </script>

@@ -8,4 +8,4 @@
 
 testuser = User.create!(username: "TestUser", password: "password")
 
-#testuser.feeds.create!(url: "https://news.ycombinator.com/rss", title: "Hacker News RSS")
+Feed.find_or_create("http://www.npr.org/rss/rss.php?id=1001", testuser.id)

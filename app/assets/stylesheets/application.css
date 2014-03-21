@@ -19,9 +19,13 @@ span.error-msg {
 }
 
 div#current-feed-entries {
-  border: 1px solid;
+  border-left: 2px solid;
   height: 400px;
   overflow: scroll;
+}
+
+div#current-feed-entries::-webkit-scrollbar {
+  display: none;
 }
 
 .glyphicon-refresh {

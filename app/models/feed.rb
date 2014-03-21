@@ -30,8 +30,9 @@ class Feed < ActiveRecord::Base
         return feed
       else
         feed_data = SimpleRSS.parse(open(url))
-        feed = Feed.create(url: url, title: feed_data.title, user_id: user_id, description: feed_data.description)
-        feed_data.entries.each { |en| Entry.create_from_JSON(en, feed) }
+        feed = user.feeds.create(url: url, title: feed_data.title, description: feed_data.description)
+        #feed = Feed.create(url: url, title: feed_data.title, user_id: user_id, description: feed_data.description)
+        feed.reload(user.id)
         return feed
       end
     rescue => e
@@ -42,7 +43,7 @@ class Feed < ActiveRecord::Base
   #reload feed and fetch new entries only for current user
   def reload(user_id)
     feed_data = SimpleRSS.parse(open(self.url))
-    existing_entry_links = Feed.where("user_id = ?", user_id).pluck(:url).sort
+    existing_entry_links = self.entries.pluck(:link).sort
 
     feed_data.entries.each do |entry_data|
       unless existing_entry_links.include?(entry_data.link)
