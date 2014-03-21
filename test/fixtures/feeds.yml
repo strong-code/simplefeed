@@ -9,6 +9,7 @@
 #  description :text             not null
 #  created_at  :datetime
 #  updated_at  :datetime
+#  category    :text             default("Uncategorized")
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

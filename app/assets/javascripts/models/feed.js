@@ -3,9 +3,23 @@ SimpleFeed.Models.Feed = Backbone.Model.extend({
     this.entries();
   },
 
+  parse: function(response) {
+    if (response['entries']) {
+      this.entries().set(response['entries']);
+      delete response['entries'];
+    }
+    this.set({
+      id: response['id'],
+      url: response['url'],
+      title: response['title'],
+      user_id: response['user_id']
+    });
+    return response['entries'];
+  },
+
   entries: function() {
-    if (response["entries"]) {
-      var feedEntries = new SimpleReader.Collections.FeedEntries([], {
+    if (!this.get("entries")) {
+      var feedEntries = new SimpleFeed.Collections.FeedEntries([], {
         feed: this
       });
       this.set({

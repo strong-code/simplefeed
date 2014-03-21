@@ -1,0 +1,30 @@
+<h1 id="welcome">Hello, <%= user.get('username') %></h1>
+
+<header class="row"></header>
+
+<div class="row"></div>
+
+<div id="feed-list">
+  <ul>
+    <% feeds.forEach(function(feed) { %>
+      <div data-id="<%= feed.get('id')%>"><%=feed.get('title')%></div>
+    <% }) %>
+  </ul>
+</div>
+
+<div class="row"></div>
+
+<form method="POST" id="new-feed-form">
+  <div class="input-group">
+    <input type="text" class="form-control" name="feed[url]" placeholder="example.com/rss">
+    <span class="input-group-btn">
+      <button type="submit" class="btn btn-default" id="submit-new-feed-btn">
+        <span class="glyphicon glyphicon-plus-sign" id="submit-new-feed-icon"></span>  Add Feed
+      </button>
+    </span>
+  </div>
+</form>
+
+<div class="row"></div>
+
+<button class="btn btn-default" id="logout-btn">Log Out</button>

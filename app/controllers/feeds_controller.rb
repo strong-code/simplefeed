@@ -6,7 +6,7 @@ class FeedsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to user_url(@user) }
-      format.json { render :json => @user.as_json( :include => { :feeds => { :include => { :entries => {}}}} )}
+      format.json { render :json => @user.feeds.to_json(:include => :entries) }
     end
   end
 

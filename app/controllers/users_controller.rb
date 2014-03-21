@@ -25,10 +25,13 @@ class UsersController < ApplicationController
       @user = current_user
       @feeds = @user.feeds
       @feeds.each { |f| f.reload(@user.id) }
-      #good idea to implement entry sorting by pubdate
-      #t @feeds.each { |f| f.clean_for_rendering }
-      render :show
+
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render :json => @user.as_json}
+      end
     end
+
   end
 
   def update

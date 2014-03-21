@@ -9,6 +9,7 @@
 #  description :text             not null
 #  created_at  :datetime
 #  updated_at  :datetime
+#  category    :text             default("Uncategorized")
 #
 
 require 'open-uri'
@@ -31,7 +32,6 @@ class Feed < ActiveRecord::Base
       else
         feed_data = SimpleRSS.parse(open(url))
         feed = user.feeds.create(url: url, title: feed_data.title, description: feed_data.description)
-        #feed = Feed.create(url: url, title: feed_data.title, user_id: user_id, description: feed_data.description)
         feed.reload(user.id)
         return feed
       end

@@ -8,7 +8,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="row">
 
     <% if flash[:errors] %>
       <div class="col-xs-9 col-xs-offset-4">
@@ -18,9 +17,11 @@
       </div>
     <% end %>
 
-    <div id="content">
+    <div id="menu" class="col-xs-3 col-xs-offset-0"></div>
+
+    <div id="content" class="col-xs-8 col-xs-offset-1">
       <%= yield %>
     </div>
-  </div>
+
 </body>
 </html>

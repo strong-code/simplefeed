@@ -1,5 +1,6 @@
 SimpleFeed.Routers.Router = Backbone.Router.extend({
-  initialize: function(feeds, $rootEl, $menu) {
+  initialize: function(user, feeds, $rootEl, $menu) {
+    this.user = user;
     this.feeds = feeds;
     this.$rootEl = $rootEl;
     this.$menu = $menu;
@@ -10,6 +11,16 @@ SimpleFeed.Routers.Router = Backbone.Router.extend({
   },
 
   index: function() {
-    alert("got here");
+    this.$rootEl.html('');
+    // var indexView = new SimpleFeed.Views.Index({
+//       collection: this.feeds
+//     });
+//     this._swapView(view);
+  },
+
+  _swapView: function(view) {
+    this._currentView && this._currentView.remove();
+    this._currentView = view;
+    this.$rootEl.html(view.render().$el);
   }
 })

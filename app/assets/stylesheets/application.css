@@ -14,7 +14,41 @@
  */
 @import "bootstrap";
 
-span.error-msg {
+/* Backbone-specific CSS below */
+
+body, html {
+  height: 100%;
+}
+
+div#menu {
+  background-color: #EDEDE1;
+  float: left;
+  height: 100%;
+}
+
+div#feed-list {
+  margin-top: 5%;
+}
+
+h1#welcome {
+  text-align: center;
+}
+
+#logout-btn {
+  margin-left: 33%;
+  margin-top: 15%;
+}
+
+form#new-feed-form {
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+/* Rails-specific CSS below */
+
+/*span.error-msg {
   color: red;
 }
 
@@ -87,4 +121,4 @@ h4.feed-list-title {
   to {
     transform: rotate(360deg);
   }
-}
+}*/
