@@ -9,7 +9,8 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
 
   events: {
     "click .glyphicon-trash" : "deleteFeed",
-    "click .glyphicon-refresh" : "refreshFeed"
+    "click .glyphicon-refresh" : "refreshFeed",
+    "click .input-group-btn" : "addFeed"
   },
 
   render: function() {
@@ -20,6 +21,14 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     return this;
+  },
+
+  addFeed: function(e) {
+    e.preventDefault();
+    var url = $('input.form-control').val();
+    var feed = new SimpleFeed.Models.Feed(url);
+    debugger
+    //need to possibly modify feed controller
   },
 
   refreshFeed: function(e) {
