@@ -5,6 +5,17 @@ class UsersController < ApplicationController
     render :new
   end
 
+  def index
+    if logged_in?
+      respond_to do |format|
+        format.html { redirect_to user_url(current_user) }
+        format.json { render :json => current_user.to_json(:only => [:username, :id]) }
+      end
+    else
+      redirect_to "/"
+    end
+  end
+
   def create
     @user = User.new(user_params)
 

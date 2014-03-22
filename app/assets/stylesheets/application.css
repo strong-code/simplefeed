@@ -26,20 +26,42 @@ div#menu {
   height: 100%;
 }
 
+div.feed-item {
+  margin-bottom: 10px;
+}
+
+span.feed-item-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+span.unread-entry-count {
+  float: right;
+  margin-right: 20%;
+}
+
+.glyphicon:hover {
+  cursor: pointer;
+}
+
 div#feed-list {
   margin-top: 5%;
+  color: rgba( 0, 0, 0, 0.53 );
 }
 
 h1#welcome {
+  font-weight: lighter;
   text-align: center;
 }
 
 #logout-btn {
   margin-left: 33%;
   margin-top: 15%;
+  color: rgba( 0, 0, 0, 0.53 );
 }
 
 form#new-feed-form {
+  font-weight: lighter;
   margin-top: 10%;
   margin-left: auto;
   margin-right: auto;

@@ -11,7 +11,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
 
   render: function() {
     var that = this;
-    this.user.fetch({
+    this.collection.fetch({
       success: function() {
         that.$el.html(that.template({
           feeds: that.collection,

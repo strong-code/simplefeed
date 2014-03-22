@@ -13,10 +13,11 @@
 #  content_encoded :text
 #  created_at      :datetime
 #  updated_at      :datetime
+#  read            :boolean          default(FALSE), not null
 #
 
 class Entry < ActiveRecord::Base
-  validates :title, :link, :feed_id, presence: true
+  validates :title, :link, :feed_id, :read, presence: true
 
   belongs_to :feed
 

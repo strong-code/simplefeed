@@ -21,6 +21,8 @@ class Feed < ActiveRecord::Base
 
   has_many :entries, :dependent => :destroy
 
+  attr_accessor :get_unread_entry_count
+
   #find an existing feed in our database by url (which is uniq)
   def self.find_or_create(url, user_id)
     user = User.find(user_id)
@@ -51,7 +53,7 @@ class Feed < ActiveRecord::Base
       end
     end
 
-    self.touch #update the timestamp in db after we do this
+    #self.touch #update the timestamp in db after we do this
     self
   end
 
@@ -60,6 +62,10 @@ class Feed < ActiveRecord::Base
     :user_id => user_id,
     :url => url
     )
+  end
+
+  def get_unread_entry_count
+    self.entries.count("read", :conditions => "false")
   end
 
   def clean_for_rendering

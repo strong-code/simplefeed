@@ -3,10 +3,10 @@ class FeedsController < ApplicationController
   def index
     @user = current_user
     @user.feeds.each { |f| f.reload(@user.id) }
-
+    # @user.feeds.to_json(include: :entries, methods: :get_unread_entry_count) }
     respond_to do |format|
       format.html { redirect_to user_url(@user) }
-      format.json { render :json => @user.feeds.to_json(:include => :entries) }
+      format.json { render :json => @user.feeds.to_json(methods: :get_unread_entry_count, include: :entries) }
     end
   end
 

@@ -10,15 +10,18 @@ window.SimpleFeed = {
 
     feeds.fetch({
       success: function() {
-        //grab user_id from a feed we just got, use that to construct current user model
-        var currentUser = new SimpleFeed.Models.User(feeds.first().get('user_id'));
+        var currentUser = new SimpleFeed.Models.User();
         var feedsIndexView = new SimpleFeed.Views.FeedsIndex({
           collection: feeds,
           user: currentUser
         });
-        $menu.html(feedsIndexView.render().$el);
-        new SimpleFeed.Routers.Router(currentUser, feeds, $rootEl, $menu);
-        Backbone.history.start();
+        currentUser.fetch({
+          success: function() {
+            $menu.html(feedsIndexView.render().$el);
+            new SimpleFeed.Routers.Router(currentUser, feeds, $rootEl, $menu);
+            Backbone.history.start();
+          }
+        });
       },
       error: function() {
         console.log("Failed to fetch user");
