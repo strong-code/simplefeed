@@ -7,26 +7,29 @@ window.SimpleFeed = {
     var $rootEl = $("#content");
     var $menu = $("#menu");
     var feeds = new SimpleFeed.Collections.Feeds();
+    var currentUser = new SimpleFeed.Models.User();
+    var feedsIndexView;
 
-    feeds.fetch({
+    currentUser.fetch({
       success: function() {
-        var currentUser = new SimpleFeed.Models.User();
-        var feedsIndexView = new SimpleFeed.Views.FeedsIndex({
+        feedsIndexView = new SimpleFeed.Views.FeedsIndex({
           collection: feeds,
           user: currentUser
         });
-        currentUser.fetch({
-          success: function() {
-            $menu.html(feedsIndexView.render().$el);
-            new SimpleFeed.Routers.Router(currentUser, feeds, $rootEl, $menu);
-            Backbone.history.start();
-          }
-        });
+      }
+    });
+
+    feeds.fetch({
+      success: function() {
+        $menu.html(feedsIndexView.render().$el);
+        new SimpleFeed.Routers.Router(currentUser, feeds, $rootEl, $menu);
+        Backbone.history.start();
       },
       error: function() {
         console.log("Failed to fetch user");
       }
-    })
+    });
+
   }
 };
 

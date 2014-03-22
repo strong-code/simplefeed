@@ -111,6 +111,8 @@ h4.feed-list-title {
   font-weight: bold;
 }
 
+*/
+
 .spin {
   -webkit-animation: spin 2s infinite linear;
   -moz-animation: spin 2s infinite linear;
@@ -143,4 +145,4 @@ h4.feed-list-title {
   to {
     transform: rotate(360deg);
   }
-}*/
+}

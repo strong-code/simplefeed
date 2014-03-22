@@ -6,9 +6,9 @@
 
 <div id="feed-list">
   <ul>
-    <% feeds.forEach(function(feed) { %>
+    <% feeds.each(function(feed) { %>
       <div class="feed-item">
-        <span data-id="<%= feed.get('id')%>" class="feed-item-title"><%=feed.get('title')%></span><span class="unread-entry-count">(<%= feed.get('unread') %>)</span><br>
+        <span data-id="<%= feed.get('id')%>" class="feed-item-title"><%= feed.get('title')%></span><span class="unread-entry-count">(<%= feed.get('unread') %>)</span><br>
         <span data-id="<%= feed.get('id') %>" class="glyphicon glyphicon-refresh"></span>
         <span data-id="<%= feed.get('id') %>" class="glyphicon glyphicon-trash"></span>
       </div>

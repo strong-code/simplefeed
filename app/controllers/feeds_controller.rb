@@ -3,7 +3,7 @@ class FeedsController < ApplicationController
   def index
     @user = current_user
     @user.feeds.each { |f| f.reload(@user.id) }
-    # @user.feeds.to_json(include: :entries, methods: :get_unread_entry_count) }
+
     respond_to do |format|
       format.html { redirect_to user_url(@user) }
       format.json { render :json => @user.feeds.to_json(methods: :get_unread_entry_count, include: :entries) }
@@ -28,12 +28,22 @@ class FeedsController < ApplicationController
     redirect_to user_url(user)
   end
 
+  def show
+    user = current_user
+    feed = user.feeds.find_by_id(params[:id])
+    feed.reload(user.id)
+    render :json => feed.to_json(methods: :get_unread_entry_count, include: :entries)
+  end
+
   def destroy
     feed = current_user.feeds.find_by_id(params[:id]);
     feed.destroy();
     @user = current_user
     @feeds = @user.feeds
-    redirect_to user_url(@user)
+    respond_to do |format|
+      format.html { redirect_to user_url(@user) }
+      format.json { render :json => @feed.to_json(methods: :get_unread_entry_count, include: :entries) }
+    end
   end
 
   def feed_params
