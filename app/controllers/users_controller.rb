@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     else
       @user = current_user
       @feeds = @user.feeds
-      @feeds.each { |f| f.reload(@user.id) }
+      @feeds.each { |f| f.reload }
 
       respond_to do |format|
         format.html { render :show }

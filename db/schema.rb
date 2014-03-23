@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140321224616) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "entries", force: true do |t|
     t.text     "title",                           null: false
     t.text     "link",                            null: false
@@ -40,7 +37,7 @@ ActiveRecord::Schema.define(version: 20140321224616) do
     t.text     "category",    default: "Uncategorized"
   end
 
-  add_index "feeds", ["url"], name: "index_feeds_on_url", using: :btree
+  add_index "feeds", ["url"], name: "index_feeds_on_url"
 
   create_table "users", force: true do |t|
     t.text     "username",      null: false

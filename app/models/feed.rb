@@ -43,13 +43,14 @@ class Feed < ActiveRecord::Base
   end
 
   #reload feed and fetch new entries only for current user
-  def reload(user_id)
+  def reload
     feed_data = SimpleRSS.parse(open(self.url))
     existing_entry_links = self.entries.pluck(:link).sort
 
     feed_data.entries.each do |entry_data|
       unless existing_entry_links.include?(entry_data.link)
-        Entry.create_from_JSON(entry_data, self)
+        e = Entry.create_from_JSON(entry_data, self)
+        puts e.errors.full_messages
       end
     end
 
@@ -64,6 +65,7 @@ class Feed < ActiveRecord::Base
     )
   end
 
+  #this MAY OR MAY NOT be working in postgres, doesn't work in sqlite
   def get_unread_entry_count
     self.entries.count("read", :conditions => "false")
   end

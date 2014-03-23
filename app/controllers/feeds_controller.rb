@@ -2,7 +2,7 @@ class FeedsController < ApplicationController
 
   def index
     @user = current_user
-    @user.feeds.each { |f| f.reload(@user.id) }
+    @user.feeds.each { |f| f.reload }
 
     respond_to do |format|
       format.html { redirect_to user_url(@user) }
@@ -24,14 +24,14 @@ class FeedsController < ApplicationController
   def update
     user = current_user
     feed = user.feeds.find_by_id(params[:id])
-    feed.reload(user.id)
+    feed.reload
     redirect_to user_url(user)
   end
 
   def show
     user = current_user
     feed = user.feeds.find_by_id(params[:id])
-    feed.reload(user.id)
+    feed.reload
     render :json => feed.to_json(methods: :get_unread_entry_count, include: :entries)
   end
 
