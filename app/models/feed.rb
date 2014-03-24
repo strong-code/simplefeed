@@ -12,6 +12,7 @@
 #  category    :text             default("Uncategorized")
 #
 
+
 require 'open-uri'
 require 'simple-rss'
 

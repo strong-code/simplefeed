@@ -9,9 +9,11 @@
 </head>
 <body>
 
-  <script>
-    var username = "<%= current_user.username %>";
-  </script>
+  <% if current_user %>
+    <script>
+      var username = "<%= current_user.username %>";
+    </script>
+  <% end %>
 
     <div id="menu" class="col-xs-3 col-xs-offset-0"></div>
 

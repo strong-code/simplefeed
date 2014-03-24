@@ -39,13 +39,22 @@ div.feed-item:hover {
   border-left-color: rgba( 0, 0, 0, 0.45 );
 }
 
+span.feed-item-title {
+  font-size: 14px;
+  font-weight: 200;
+}
+
 span.feed-item-title:hover {
   cursor: pointer;
 }
 
-span.unread-entry-count {
+span.feed-item-description {
+  font-size: 12px;
+}
+
+div.unread-entry-count {
   float: right;
-  margin-right: 20%;
+  margin-right: 5%;
   font-size: 12px;
 }
 
@@ -61,18 +70,21 @@ div#feed-list {
 h1#welcome {
   font-weight: lighter;
   text-align: center;
-  font-size: 16px;
   color: rgba( 0, 0, 0, .7);
 }
 
 #logout-btn {
   margin-left: 33%;
   margin-top: 15%;
+}
+
+#logout-btn a {
+  text-decoration: none;
   color: rgba( 0, 0, 0, 0.53 );
 }
 
 form#new-feed-form {
-  font-weight: lighter;
+  font-weight: 200;
   margin-top: 10%;
   margin-left: auto;
   margin-right: auto;

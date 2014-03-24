@@ -11,9 +11,6 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_credentials(user_params)
-    puts "--------------------"
-    p @user
-    puts "--------------------"
 
     if @user
       login!(@user)
@@ -27,7 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!
-    redirect_to "/"
+    redirect_to new_session_url
   end
 
   def user_params
