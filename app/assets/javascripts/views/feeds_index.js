@@ -3,7 +3,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   template: JST['feeds/index'],
 
   initialize: function() {
-    this.listenTo(this.collection, "create add remove", this.render);
+    this.listenTo(this.collection, "remove change sync", this.render);
   },
 
   events: {
@@ -15,15 +15,19 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   render: function() {
     var renderedContent;
     var that = this;
-
-    this.collection.fetch({
-      success: function() {
-        renderedContent = that.template({
+    renderedContent = that.template({
           feeds: that.collection
         });
         that.$el.html(renderedContent);
-      }
-    });
+
+    // this.collection.fetch({
+    //   success: function() {
+    //     renderedContent = that.template({
+    //       feeds: that.collection
+    //     });
+    //     that.$el.html(renderedContent);
+    //   }
+    // });
   },
 
   addFeed: function(e) {
@@ -37,7 +41,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     $(e.currentTarget).toggleClass("spin");
     var that = this;
     this.collection.get(feedId).fetch({
-      success: function(that) {
+      success: function() {
         $(e.currentTarget).toggleClass("spin");
       }
     });
@@ -47,7 +51,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     var feedId = $(e.currentTarget).data('id');
     var feed = this.collection.get(feedId);
     this.collection.remove(feedId)
-    feed.destroy({url: '/feeds/'+feedId});
+    feed.destroy({url: '/feeds/'+feedId}, {wait: true});
   }
 
 });

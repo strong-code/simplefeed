@@ -13,17 +13,14 @@
     var username = "<%= current_user.username %>";
   </script>
 
-    <% if flash[:errors] %>
-      <div class="col-xs-9 col-xs-offset-4">
-        <% flash[:errors].each do |error| %>
-            <span class="alert alert-warning error-msg"><span class="glyphicon glyphicon-exclamation-sign"></span> <%= error %></span>
-        <% end %>
-      </div>
-    <% end %>
-
     <div id="menu" class="col-xs-3 col-xs-offset-0"></div>
 
     <div id="content" class="col-xs-8 col-xs-offset-1">
+      <% if flash[:errors] %>
+      <% flash[:errors].each do |error| %>
+          <span class="alert alert-warning error-msg"><span class="glyphicon glyphicon-exclamation-sign"></span> <%= error %></span>
+      <% end %>
+    <% end %>
       <%= yield %>
     </div>
 
