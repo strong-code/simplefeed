@@ -6,7 +6,7 @@
 #  url         :text             not null
 #  title       :text             not null
 #  user_id     :integer          not null
-#  description :text             not null
+#  description :text
 #  created_at  :datetime
 #  updated_at  :datetime
 #  category    :text             default("Uncategorized")

@@ -3,13 +3,14 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   template: JST['feeds/index'],
 
   initialize: function() {
-    this.listenTo(this.collection, "remove add change", this.render);
+    this.listenTo(this.collection, "add remove", this.render);
   },
 
   events: {
     "click .glyphicon-trash" : "deleteFeed",
     "click .glyphicon-refresh" : "refreshFeed",
-    "click .input-group-btn" : "addFeed"
+    "click .input-group-btn" : "addFeed",
+    "click .feed-item-container" : "showFeed"
   },
 
   render: function() {
@@ -43,11 +44,13 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
 
   refreshFeed: function(e) {
     var feedId = $(e.currentTarget).data('id');
-    $(e.currentTarget).toggleClass("spin");
+    var elem = $(e.currentTarget)
+    elem.toggleClass("spin");
     var that = this;
     this.collection.get(feedId).fetch({
       success: function() {
-        $(e.currentTarget).toggleClass("spin");
+        elem.toggleClass("spin");
+        that.render();
       }
     });
   },
@@ -60,6 +63,10 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     var feed = this.collection.get(feedId);
     this.collection.remove(feedId)
     feed.destroy({url: '/feeds/'+feedId}, {wait: true});
+  },
+
+  showFeed: function(e) {
+    //alert("clicked!")
   }
 
 });

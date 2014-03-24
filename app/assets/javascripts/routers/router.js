@@ -1,17 +1,21 @@
 SimpleFeed.Routers.Router = Backbone.Router.extend({
   initialize: function(feeds, $rootEl, $menu) {
-    //this.user = user;
     this.feeds = feeds;
     this.$rootEl = $rootEl;
     this.$menu = $menu;
   },
 
   routes: {
-    "" : "index"
+    "" : "index",
+    "/feed/:id" : "showFeed"
   },
 
   index: function() {
     this.$rootEl.html('');
+  },
+
+  showFeed: function(id) {
+    debugger
   },
 
   _swapView: function(view) {
