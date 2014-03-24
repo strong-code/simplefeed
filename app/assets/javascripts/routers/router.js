@@ -1,6 +1,6 @@
 SimpleFeed.Routers.Router = Backbone.Router.extend({
-  initialize: function(user, feeds, $rootEl, $menu) {
-    this.user = user;
+  initialize: function(feeds, $rootEl, $menu) {
+    //this.user = user;
     this.feeds = feeds;
     this.$rootEl = $rootEl;
     this.$menu = $menu;

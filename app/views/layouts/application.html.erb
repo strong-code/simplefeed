@@ -9,6 +9,10 @@
 </head>
 <body>
 
+  <script>
+    var username = "<%= current_user.username %>";
+  </script>
+
     <% if flash[:errors] %>
       <div class="col-xs-9 col-xs-offset-4">
         <% flash[:errors].each do |error| %>

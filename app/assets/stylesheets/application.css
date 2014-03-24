@@ -30,8 +30,8 @@ div#menu {
 div.feed-item {
   margin-bottom: 15px;
   padding-left: 8px;
-  transition: border-color .4s ease-in-out;
-  -webkit-transition: border-color .4s ease-in-out;
+  transition: border-color .3s ease-in-out;
+  -webkit-transition: border-color .3s ease-in-out;
   border-left: 3px solid transparent;
 }
 

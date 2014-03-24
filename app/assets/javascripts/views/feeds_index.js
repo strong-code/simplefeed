@@ -2,9 +2,8 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
 
   template: JST['feeds/index'],
 
-  initialize: function(user) {
-    this.user = user.user;
-    this.listenTo(this.collection, "add remove", this.render);
+  initialize: function() {
+    this.listenTo(this.collection, "create add remove", this.render);
   },
 
   events: {
@@ -14,28 +13,23 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   },
 
   render: function() {
-    var renderedContent = this.template({
-      user: this.user,
-      feeds: this.collection
-    });
+    var renderedContent;
+    var that = this;
 
-    this.$el.html(renderedContent);
-    return this;
+    this.collection.fetch({
+      success: function() {
+        renderedContent = that.template({
+          feeds: that.collection
+        });
+        that.$el.html(renderedContent);
+      }
+    });
   },
 
   addFeed: function(e) {
     e.preventDefault();
     var url = $('input.form-control').val();
     var newFeed = this.collection.create({url: url}, {wait: true});
-    debugger
-    // var that = this;
-    // debugger
-    // newFeed.fetch({
-    //   success: function(that) {
-    //     debugger
-    //     //that.render();
-    //   }
-    // });
   },
 
   refreshFeed: function(e) {
