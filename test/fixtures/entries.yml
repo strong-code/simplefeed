@@ -13,7 +13,7 @@
 #  content_encoded :text
 #  created_at      :datetime
 #  updated_at      :datetime
-#  read            :boolean          default(FALSE), not null
+#  read            :boolean          default(FALSE)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

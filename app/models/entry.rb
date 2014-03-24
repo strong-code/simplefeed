@@ -17,7 +17,7 @@
 #
 
 class Entry < ActiveRecord::Base
-  validates :title, :link, :feed_id, :read, presence: true
+  validates :title, :link, :feed_id, presence: true
 
   belongs_to :feed
 
@@ -32,9 +32,7 @@ class Entry < ActiveRecord::Base
      description: entryData[:description],
      content_encoded: entryData[:content_encoded],
      comments_url: entryData[:comments],
-     category: entryData[:category],
-     #read: FALSE, #CHANGE FOR POSTGRES
-     read: 0
+     category: entryData[:category]
     })
   end
 

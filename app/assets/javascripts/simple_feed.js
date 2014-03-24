@@ -7,29 +7,24 @@ window.SimpleFeed = {
     var $rootEl = $("#content");
     var $menu = $("#menu");
     var feeds = new SimpleFeed.Collections.Feeds();
-    var currentUser = new SimpleFeed.Models.User();
-    var feedsIndexView;
+    var user = new SimpleFeed.Models.User();
+    var feedsIndexView = new SimpleFeed.Views.FeedsIndex({collection: feeds, user: user});
 
-    currentUser.fetch({
+    //AHAHAH IM DOING THIS AND YOU CAN'T TELL ME NO
+    user.fetch({
       success: function() {
-        feedsIndexView = new SimpleFeed.Views.FeedsIndex({
-          collection: feeds,
-          user: currentUser
+        feeds.fetch({
+          success: function() {
+            $menu.html(feedsIndexView.render().$el);
+            new SimpleFeed.Routers.Router(user, feeds, $rootEl, $menu);
+            Backbone.history.start();
+          },
+          error: function() {
+            console.log("Failed initial fetching of feeds from server!");
+          }
         });
       }
     });
-
-    feeds.fetch({
-      success: function() {
-        $menu.html(feedsIndexView.render().$el);
-        new SimpleFeed.Routers.Router(currentUser, feeds, $rootEl, $menu);
-        Backbone.history.start();
-      },
-      error: function() {
-        console.log("Failed to fetch user");
-      }
-    });
-
   }
 };
 

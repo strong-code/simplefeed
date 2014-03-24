@@ -67,7 +67,7 @@ class Feed < ActiveRecord::Base
 
   #this MAY OR MAY NOT be working in postgres, doesn't work in sqlite
   def get_unread_entry_count
-    self.entries.count("read", :conditions => "false")
+    self.entries.where(read: false).count
   end
 
   def clean_for_rendering

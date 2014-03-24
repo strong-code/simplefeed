@@ -4,7 +4,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
 
   initialize: function(user) {
     this.user = user.user;
-    this.listenTo(this.collection, "sync", this.render);
+    this.listenTo(this.collection, "add remove", this.render);
   },
 
   events: {
@@ -26,9 +26,16 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   addFeed: function(e) {
     e.preventDefault();
     var url = $('input.form-control').val();
-    var feed = new SimpleFeed.Models.Feed(url);
+    var newFeed = this.collection.create({url: url}, {wait: true});
     debugger
-    //need to possibly modify feed controller
+    // var that = this;
+    // debugger
+    // newFeed.fetch({
+    //   success: function(that) {
+    //     debugger
+    //     //that.render();
+    //   }
+    // });
   },
 
   refreshFeed: function(e) {
@@ -46,8 +53,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     var feedId = $(e.currentTarget).data('id');
     var feed = this.collection.get(feedId);
     this.collection.remove(feedId)
-    feedId.destroy();
-    this.render();
+    feed.destroy({url: '/feeds/'+feedId});
   }
 
 });

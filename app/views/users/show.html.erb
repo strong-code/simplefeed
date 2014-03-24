@@ -49,7 +49,11 @@
       <% @feeds.reverse.each do |feed| %>
         <h3><%= feed.title %></h3>
           <% feed.entries.reverse.each do |entry| %>
-            <div><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></div>
+            <% begin %>
+              <div><a href="<%= CGI.unescapeHTML(entry.link) %>"><%= CGI.unescapeHTML(entry.title) %></a></div>
+            <% rescue => e %>
+              <div><a href="<%= entry.link.force_encoding("ASCII-8BIT") %>"><%= entry.title.force_encoding("ASCII-8BIT") %></a></div>
+            <% end %>
           <% end %>
       <% end %>
     </div>

@@ -3,9 +3,9 @@ SimpleFeed.Models.Feed = Backbone.Model.extend({
     this.entries();
   },
 
-  url: function() {
-    return "/feeds/"+this.id
-  },
+  // url: function() {
+  //   return "/feeds/"+this.id
+  // },
 
   parse: function(response) {
     if (response['entries']) {

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140321224616) do
+ActiveRecord::Schema.define(version: 20140323223457) do
 
   create_table "entries", force: true do |t|
     t.text     "title",                           null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140321224616) do
     t.text     "content_encoded"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "read",            default: false, null: false
+    t.boolean  "read",            default: false
   end
 
   create_table "feeds", force: true do |t|

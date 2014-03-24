@@ -18,6 +18,7 @@
 
 body, html {
   height: 100%;
+  font-family: sans-serif;
 }
 
 div#menu {
@@ -27,17 +28,25 @@ div#menu {
 }
 
 div.feed-item {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  padding-left: 8px;
+  transition: border-color .4s ease-in-out;
+  -webkit-transition: border-color .4s ease-in-out;
+  border-left: 3px solid transparent;
+}
+
+div.feed-item:hover {
+  border-left-color: rgba( 0, 0, 0, 0.45 );
 }
 
 span.feed-item-title:hover {
-  text-decoration: underline;
   cursor: pointer;
 }
 
 span.unread-entry-count {
   float: right;
   margin-right: 20%;
+  font-size: 12px;
 }
 
 .glyphicon:hover {
@@ -52,6 +61,8 @@ div#feed-list {
 h1#welcome {
   font-weight: lighter;
   text-align: center;
+  font-size: 16px;
+  color: rgba( 0, 0, 0, .7);
 }
 
 #logout-btn {
