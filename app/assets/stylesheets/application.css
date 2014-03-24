@@ -28,6 +28,7 @@ div#menu {
 }
 
 div.feed-item {
+  width: 85%;
   margin-bottom: 15px;
   padding-left: 8px;
   transition: border-color .3s ease-in-out;
@@ -54,7 +55,6 @@ span.feed-item-description {
 
 div.unread-entry-count {
   float: right;
-  margin-right: 5%;
   font-size: 12px;
 }
 
