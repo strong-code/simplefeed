@@ -28,6 +28,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
         renderedContent = that.template({
           feeds: that.collection
         });
+        $('.spin').toggleClass('spin');
         that.$el.html(renderedContent);
       }
     });
@@ -49,7 +50,6 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     var that = this;
     this.collection.get(feedId).fetch({
       success: function() {
-        elem.toggleClass("spin");
         that.render();
       }
     });
@@ -61,8 +61,8 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     $(e.currentTarget).toggleClass("spin");
     var feedId = $(e.currentTarget).data('id');
     var feed = this.collection.get(feedId);
-    this.collection.remove(feedId)
     feed.destroy({url: '/feeds/'+feedId}, {wait: true});
+    this.collection.remove(feedId)
   },
 
   showFeed: function(e) {

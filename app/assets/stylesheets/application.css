@@ -18,7 +18,7 @@
 
 body, html {
   height: 100%;
-  font-family: sans-serif;
+  /*font-family: sans-serif;*/
 }
 
 /* Side-menu div */
@@ -69,7 +69,7 @@ span.feed-item-title:hover {
 }
 
 span.feed-item-description {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 div.unread-entry-count {
@@ -148,7 +148,7 @@ div#content {
 .feed-entry-bar {
   padding-top: 3px;
   padding-bottom: 3px;
-  padding-left: 4%;
+  padding-left: 10%;
   padding-right: 4%;
   font-weight: 200;
   font-size: 14px;
@@ -162,6 +162,7 @@ div#content {
 }
 
 span.feed-entry-description {
+  overflow: hidden;
   font-size: 13px;
   color: rgba( 0, 0, 0, 0.53 )
 }

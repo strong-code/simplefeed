@@ -6,7 +6,7 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
   },
 
   events: {
-    "click .feed-entry-bar" : "showEntry"
+    "click .feed-entry-bar" : "showOrHideEntry"
   },
 
   render: function() {
@@ -17,9 +17,11 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
     return this;
   },
 
-  showEntry: function(e) {
-    $(e.currentTarget.children[1]).toggleClass('feed-entry-hidden');
+  showOrHideEntry: function(e) {
     $(e.currentTarget.children[1]).toggleClass('feed-description-brief');
-    debugger
+    $(e.currentTarget.children[1]).toggleClass('feed-entry-hidden');
+    //$(e.currentTarget.children[1]).toggleClass('feed-description-brief');
+    var derf = $(e.currentTarget.children[1]).text()
+    $(e.currentTarget.children[1]).html(derf)
   }
 });

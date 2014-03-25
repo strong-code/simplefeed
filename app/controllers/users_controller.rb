@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def index
     if logged_in?
       respond_to do |format|
-        format.html { redirect_to user_url(current_user) }
+        #format.html { redirect_to user_url(current_user) }
         format.json { render :json => current_user.to_json(:only => [:username, :id]) }
       end
     else
