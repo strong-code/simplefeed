@@ -5,6 +5,10 @@ SimpleFeed.Collections.FeedEntries = Backbone.Collection.extend({
     this.feed = options.feed;
   },
 
+  comparator: function(entry) {
+    return -Date.parse(entry.get('pubdate'));
+  },
+
   url: function() {
     return '/feeds/' + this.feed.id + "/entries";
   }
