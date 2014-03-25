@@ -4,7 +4,7 @@ window.SimpleFeed = {
   Views: {},
   Routers: {},
   initialize: function() {
-    var $rootEl = $("#content");
+    var $content = $("#content");
     var $menu = $("#menu");
     var feeds = new SimpleFeed.Collections.Feeds();
     var feedsIndexView = new SimpleFeed.Views.FeedsIndex({collection: feeds, el: $menu});
@@ -12,7 +12,7 @@ window.SimpleFeed = {
     feeds.fetch({
       success: function() {
         feedsIndexView.render();
-        new SimpleFeed.Routers.Router(feeds, $rootEl, $menu);
+        new SimpleFeed.Routers.Router(feeds, $content, $menu);
         Backbone.history.start();
       },
       error: function() {

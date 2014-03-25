@@ -6,14 +6,13 @@
 
 <div id="feed-list">
     <% feeds.each(function(feed) { %>
-      <div class="feed-item-container">
+      <div class="feed-item-container" id="container-<%= feed.id %>">
         <div class="unread-entry-count">(<%= feed.get('unread') %>)</div>
-        <div class="feed-item" data-id="<%= feed.id %>">
-          <span data-id="<%= feed.id%>" class="feed-item-title"><%= feed.get('title') %></span>
+        <div class="feed-item">
+          <span data-id="<%= feed.id%>" class="feed-item-title"><%= feed.get('title').substring(0,35) %></span><% if (feed.get('title').length>35) { %>...<%}%>
+          <br>
           <span data-id="<%= feed.id %>" class="glyphicon glyphicon-refresh"></span>
           <span data-id="<%= feed.id %>" class="glyphicon glyphicon-trash"></span>
-          <br>
-          <span class="feed-item-description"><%= feed.get('description')%></span>
         </div>
       </div>
     <% }) %>

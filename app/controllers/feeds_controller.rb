@@ -14,7 +14,7 @@ class FeedsController < ApplicationController
     @user = current_user
     feed = Feed.find_or_create(params[:url], @user.id)
 
-    if feed
+    if !feed.nil?
       respond_to do |format|
         format.html { redirect_to user_url(@user) }
         format.json { render :json => feed.to_json(methods: :get_unread_entry_count, include: :entries) }
@@ -23,7 +23,7 @@ class FeedsController < ApplicationController
       flash[:errors] = ["Unable to parse RSS/Atom feed from the supplied URL"]
       respond_to do |format|
         format.html { redirect_to user_url(@user) }
-        format.json { render :json => 422 }
+        format.json { render :json => flash[:errors] }
       end
     end
   end

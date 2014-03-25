@@ -1,0 +1,14 @@
+<div id="row"></div>
+
+<div id="entry-list">
+  <% feed.entries().each(function(entry) { %>
+    <div class="feed-entry-bar" data-id="<%= entry.id %>"><%= entry.get('title') %>
+      <% if (entry.get('description')) { %>
+        <span class="feed-entry-description"><%= entry.get('description').substring(0,50) %></span>
+          <div class="feed-entry-hidden">
+            <%= entry.get('description') %>
+          </div>
+      <% } %>
+    </div>
+  <% }) %>
+</div>

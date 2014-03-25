@@ -1,26 +1,30 @@
 SimpleFeed.Routers.Router = Backbone.Router.extend({
-  initialize: function(feeds, $rootEl, $menu) {
+  initialize: function(feeds, $content, $menu) {
     this.feeds = feeds;
-    this.$rootEl = $rootEl;
+    this.$content = $content;
     this.$menu = $menu;
   },
 
   routes: {
     "" : "index",
-    "/feed/:id" : "showFeed"
+    "feeds/:id" : "showFeed"
   },
 
   index: function() {
-    this.$rootEl.html('');
+    this.$content.html('');
   },
 
   showFeed: function(id) {
-    debugger
+    var feed = this.feeds.get(id);
+    var feedShowView = new SimpleFeed.Views.ShowFeed({
+      model: feed
+    });
+    this._swapView(feedShowView);
   },
 
   _swapView: function(view) {
     this._currentView && this._currentView.remove();
     this._currentView = view;
-    this.$rootEl.html(view.render().$el);
+    this.$content.html(view.render().$el);
   }
 })

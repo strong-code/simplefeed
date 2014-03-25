@@ -10,7 +10,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     "click .glyphicon-trash" : "deleteFeed",
     "click .glyphicon-refresh" : "refreshFeed",
     "click .input-group-btn" : "addFeed",
-    "click .feed-item-container" : "showFeed"
+    "click .feed-item-title" : "showFeed"
   },
 
   render: function() {
@@ -66,7 +66,10 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   },
 
   showFeed: function(e) {
-    //alert("clicked!")
+    var feedId = $(e.currentTarget).data('id');
+    $('.selected-feed').toggleClass('selected-feed');
+    $('#container-'+feedId).toggleClass('selected-feed');
+    window.location.href = "#/feeds/"+feedId;
   }
 
 });
