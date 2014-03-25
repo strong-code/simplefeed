@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require moment.min
 //= require turbolinks
 //= require simple_feed
 //= require bootstrap

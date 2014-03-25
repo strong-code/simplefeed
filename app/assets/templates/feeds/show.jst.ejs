@@ -3,7 +3,7 @@
 <div id="entry-list">
   <% feed.entries().each(function(entry) { %>
     <div class="feed-entry-bar" data-id="<%= entry.id %>"><%= entry.get('title') %>
-      <span class="feed-pubdate"><%=  entry.get('pubdate') %></span>
+      <span class="feed-pubdate"><%=  moment(entry.get('pubdate')).fromNow() %></span>
       <% if (entry.get('description')) { %>
         <div class="feed-entry-description"><%= entry.get('content-encoded') || entry.get('description') %></div>
         <div class="feed-entry-hidden feed-entry-encoded-description"></div>
