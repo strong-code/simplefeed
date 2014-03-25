@@ -25,15 +25,11 @@ class Entry < ActiveRecord::Base
   def self.create_from_JSON(entryData, feed)
     clean_encode(entryData)
 
-    puts "-------------------"
-    p entryData
-    puts "-------------------"
-
     Entry.create({
      title: entryData[:title],
      link: entryData[:link],
      feed_id: feed.id,
-     pubdate: entryData[:pubDate],
+     pubdate: entryData[:pubDate] || entryData[:published],
      description: entryData[:content_encoded] || entryData[:description] || entryData[:content],
      comments_url: entryData[:comments],
      category: entryData[:category]
