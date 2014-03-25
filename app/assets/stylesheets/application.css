@@ -134,18 +134,7 @@ div#content {
   overflow: scroll;
 }
 
-/*#content #feed-header {
-  text-align: center;
-  position: fixed;
-  top: 0;
-  font-weight: 200;
-  border-bottom: 1px solid rgba( 0, 0, 0, 0.2);
-  background: white;
-  width: 100%;
-  z-index: 100000;
-}*/
-
-.feed-entry-bar {
+div.feed-entry-bar {
   padding-top: 3px;
   padding-bottom: 3px;
   padding-left: 10%;
@@ -154,22 +143,27 @@ div#content {
   font-size: 14px;
   color: rgba( 0, 0, 0, 1 );
   border-bottom: 1px solid #EFEFEF;
-}
-
-.feed-entry-bar:hover {
-  background-color: rgba( 0, 0, 0, 0.2 );
-  cursor: pointer;'
-}
-
-span.feed-entry-description {
   overflow: hidden;
-  font-size: 13px;
-  color: rgba( 0, 0, 0, 0.53 )
 }
 
-#feed-header #feed-unread {
-  font-size: 12px;
-  color: rgba( 0, 0, 0, 0.53 );
+div.feed-entry-bar:hover {
+  background-color: rgba( 0, 0, 0, 0.15 );
+  cursor: pointer;
+}
+
+div.feed-entry-bar-selected {
+  background-color: rgba( 0, 0, 0, 0.15 );
+}
+
+div.feed-entry-description {
+  display: none;
+}
+
+div.feed-entry-encoded-description {
+  border-top: 1px solid;
+  text-align: center;
+  padding-top: 1.5%;
+  margin-bottom: 1.5%;
 }
 
 #content #entry-list {
@@ -182,10 +176,6 @@ div#content::-webkit-scrollbar {
 
 .feed-entry-hidden {
   display: none;
-}
-
-.feed-description-brief {
-  border-top: 1px solid;
 }
 
 .spin {

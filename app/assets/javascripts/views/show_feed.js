@@ -18,6 +18,7 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
   },
 
   showOrHideEntry: function(e) {
+    $(e.currentTarget).toggleClass('feed-entry-bar-selected');
     //this is necessary to work for edge cases on wonky RSS feeds
     $(e.currentTarget.children[1]).toggleClass('feed-entry-hidden');
     var derf = $(e.currentTarget.children[0]).text()

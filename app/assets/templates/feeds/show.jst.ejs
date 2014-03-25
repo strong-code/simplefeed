@@ -4,9 +4,8 @@
   <% feed.entries().each(function(entry) { %>
     <div class="feed-entry-bar" data-id="<%= entry.id %>"><%= entry.get('title') %>
       <% if (entry.get('description')) { %>
-        -
-        <span class="feed-entry-description"><%= entry.get('description') %></span>
-        <div class="feed-entry-hidden"></div>
+        <div class="feed-entry-description"><%= entry.get('content-encoded') || entry.get('description') %></div>
+        <div class="feed-entry-hidden feed-entry-encoded-description"></div>
       <% } %>
     </div>
   <% }) %>

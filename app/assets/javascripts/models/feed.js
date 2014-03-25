@@ -15,7 +15,7 @@ SimpleFeed.Models.Feed = Backbone.Model.extend({
     this.set({
       id: response['id'],
       url: response['url'],
-      description: response['content_encoded'] || response['description'],
+      description: response['description'],
       title: response['title'],
       user_id: response['user_id'],
       pubdate: response['pubdate'],
