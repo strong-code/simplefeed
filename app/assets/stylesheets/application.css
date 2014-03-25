@@ -83,7 +83,9 @@ div.unread-entry-count {
 }
 
 div#feed-list {
-  margin-top: 5%;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding-top: 5%;
   color: rgba( 0, 0, 0, 0.53 );
   overflow: auto;
   height: 70%;
@@ -134,6 +136,17 @@ div#content {
   overflow: scroll;
 }
 
+div#feed-header {
+  font-weight: 200;
+  position: fixed;
+  background: white;
+  overflow: hidden;
+  width: 100%;
+  top: 0;
+  padding-left: 7.5%;
+  border-bottom: 1px solid;
+}
+
 div.feed-entry-bar {
   padding-top: 3px;
   padding-bottom: 3px;
@@ -157,6 +170,7 @@ div.feed-entry-bar-selected {
 
 span.feed-pubdate {
   float: right;
+  padding-left: 5%;
 }
 
 div.feed-entry-description {

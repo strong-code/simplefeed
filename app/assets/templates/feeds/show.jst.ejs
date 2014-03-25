@@ -1,9 +1,13 @@
+<div id="feed-header">
+  <img src="http://g.etfv.co/<%=feed.get('url')%>?defaulticon=lightpng" width="16px" height="16px"> <%= feed.get('title') %>
+</div>
+
 <div id="row"></div>
 
 <div id="entry-list">
   <% feed.entries().each(function(entry) { %>
     <div class="feed-entry-bar" data-id="<%= entry.id %>"><%= entry.get('title') %>
-      <span class="feed-pubdate"><%=  moment(entry.get('pubdate')).fromNow() %></span>
+      <span class="feed-pubdate"><%=  moment.utc(entry.get('pubdate')).fromNow() %></span>
       <% if (entry.get('description')) { %>
         <div class="feed-entry-description"><%= entry.get('content-encoded') || entry.get('description') %></div>
         <div class="feed-entry-hidden feed-entry-encoded-description"></div>
