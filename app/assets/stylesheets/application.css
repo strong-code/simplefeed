@@ -58,12 +58,16 @@ div.feed-item-container:hover {
   background-color: rgba( 0, 0, 0, 0.1);
 }
 
-span.feed-item-title {
+div.feed-item-title {
   font-size: 14px;
   font-weight: 200;
+  width: 85%;
+  height: 18px;
+  padding-bottom: 3px;
+  overflow: hidden;
 }
 
-span.feed-item-title:hover {
+div.feed-item-title:hover {
   text-decoration: underline;
   color: black;
 }
@@ -137,14 +141,19 @@ div#content {
 }
 
 div#feed-header {
-  font-weight: 200;
+
   position: fixed;
   background: white;
   overflow: hidden;
   width: 100%;
   top: 0;
   padding-left: 7.5%;
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid black;
+}
+
+#feed-header h1 {
+  font-weight: lighter;
+  color: rgba( 0, 0, 0, .7);
 }
 
 div.feed-entry-bar {
@@ -154,9 +163,15 @@ div.feed-entry-bar {
   padding-right: 4%;
   font-weight: 200;
   font-size: 14px;
+  /*height: 26px;*/
+  width: 100%;
   color: rgba( 0, 0, 0, 1 );
   border-bottom: 1px solid #EFEFEF;
   overflow: hidden;
+}
+
+span.feed-entry-bar-description {
+  width: 85%;
 }
 
 div.feed-entry-bar:hover {
@@ -169,8 +184,10 @@ div.feed-entry-bar-selected {
 }
 
 span.feed-pubdate {
+  font-weight: 200;
   float: right;
   padding-left: 5%;
+  padding-right: 3%;
 }
 
 div.feed-entry-description {
@@ -185,7 +202,7 @@ div.feed-entry-encoded-description {
 }
 
 #content #entry-list {
-  padding-top: 20px;
+  padding-top: 70px;
 }
 
 div#content::-webkit-scrollbar {

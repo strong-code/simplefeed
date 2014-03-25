@@ -9,7 +9,7 @@
       <div class="feed-item-container" id="container-<%= feed.id %>">
         <div class="unread-entry-count">(<%= feed.get('unread') %>)</div>
         <div class="feed-item">
-          <span data-id="<%= feed.id%>" class="feed-item-title"><%= feed.get('title').substring(0,35) %></span><% if (feed.get('title').length>35) { %>...<%}%><br>
+          <div data-id="<%= feed.id%>" class="feed-item-title"><%= feed.get('title') %></div>
           <span data-id="<%= feed.id %>" class="glyphicon glyphicon-refresh"></span>
           <span data-id="<%= feed.id %>" class="glyphicon glyphicon-trash"></span>
           <br>
