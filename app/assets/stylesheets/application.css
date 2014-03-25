@@ -144,7 +144,7 @@ div#feed-header {
   width: 100%;
   top: 0;
   padding-left: 7.5%;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid #EFEFEF;
 }
 
 div.feed-entry-bar {

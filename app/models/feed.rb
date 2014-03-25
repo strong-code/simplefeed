@@ -50,8 +50,7 @@ class Feed < ActiveRecord::Base
 
     feed_data.entries.each do |entry_data|
       unless existing_entry_links.include?(entry_data.link)
-        e = Entry.create_from_JSON(entry_data, self)
-        puts e.errors.full_messages
+        Entry.create_from_JSON(entry_data, self)
       end
     end
 
