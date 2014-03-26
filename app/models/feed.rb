@@ -35,7 +35,7 @@ class Feed < ActiveRecord::Base
       else
         feed_data = SimpleRSS.parse(open(url))
         feed = user.feeds.create(url: url, title: feed_data.title, description: feed_data.description)
-        feed.reload(user.id)
+        feed.reload
         return feed
       end
     rescue => e
@@ -54,7 +54,7 @@ class Feed < ActiveRecord::Base
       end
     end
 
-    #self.touch #update the timestamp in db after we do this
+    self.touch #update the timestamp in db after we do this
     self
   end
 

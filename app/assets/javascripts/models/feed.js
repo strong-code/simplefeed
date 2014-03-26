@@ -19,6 +19,7 @@ SimpleFeed.Models.Feed = Backbone.Model.extend({
       title: response['title'],
       user_id: response['user_id'],
       pubdate: response['pubdate'] || response['created_at'],
+      updated: response['updated_at'],
       unread: response['get_unread_entry_count']
     });
     return response['entries'];

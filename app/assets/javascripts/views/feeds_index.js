@@ -3,7 +3,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   template: JST['feeds/index'],
 
   initialize: function() {
-    this.listenTo(this.collection, "add remove", this.render);
+    this.listenTo(this.collection, "sync add remove", this.render);
   },
 
   events: {
@@ -14,24 +14,12 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   },
 
   render: function() {
-    // var renderedContent;
-    // renderedContent = this.template({
-    //   feeds: this.collection
-    // });
-    // debugger
-    //
-    // this.$el.html(renderedContent);
-
-    var that = this;
-    this.collection.fetch({
-      success: function() {
-        renderedContent = that.template({
-          feeds: that.collection
-        });
-        $('.spin').toggleClass('spin');
-        that.$el.html(renderedContent);
-      }
+    var renderedContent;
+    renderedContent = this.template({
+      feeds: this.collection
     });
+
+    this.$el.html(renderedContent);
   },
 
   addFeed: function(e) {
@@ -40,7 +28,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     $('#submit-new-feed-icon').toggleClass('spin');
     e.preventDefault();
     var url = $('input.form-control').val();
-    var newFeed = this.collection.create({url: url}, {wait: true});
+    var newFeed = this.collection.create({url: url});
   },
 
   refreshFeed: function(e) {

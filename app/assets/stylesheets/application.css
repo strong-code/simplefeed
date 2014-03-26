@@ -156,6 +156,11 @@ div#feed-header {
   color: rgba( 0, 0, 0, .7);
 }
 
+#feed-header h4 {
+  font-weight: 200;
+  color: rgba( 0, 0, 0, .7);
+}
+
 div.feed-entry-bar {
   padding-top: 3px;
   padding-bottom: 3px;
