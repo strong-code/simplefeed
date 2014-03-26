@@ -18,7 +18,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     if (currentFeed !== "" || currentFeed !== undefined) {
       var feedId = /\/feeds\/(\d*)$/.exec(currentFeed);
       if (feedId !== null) {
-        $('#container-'+feedId[1]).toggleClass('selected-feed');
+        $('#container-'+currentFeed[1]).toggleClass('selected-feed');
       }
     }
     var renderedContent;
