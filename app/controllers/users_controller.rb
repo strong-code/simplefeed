@@ -45,14 +45,6 @@ class UsersController < ApplicationController
 
   end
 
-  def update
-    #
-  end
-
-  def destroy
-    #
-  end
-
   def user_params
     params.require(:user).permit(:username, :password)
   end

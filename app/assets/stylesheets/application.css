@@ -20,6 +20,14 @@ body, html {
   height: 100%;
 }
 
+#logout-link .btn {
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
+#logout-link .btn:hover {
+  color: black;
+}
+
 form .btn-default {
   color: rgba( 0, 0, 0, 0.53 );
 }
@@ -43,6 +51,22 @@ form label {
 }
 
 /* Sign In / Sign Up forms */
+
+div#landing-page h1 {
+  font-size: 72px;
+  text-align: center;
+  font-weight: lighter;
+}
+
+div#landing-page h3 {
+  text-align: center;
+  font-weight: lighter;
+  margin-bottom: 3%;
+}
+
+span#landing-image {
+  margin-left: 3%;
+}
 
 div.user-page {
   padding-left: 0;

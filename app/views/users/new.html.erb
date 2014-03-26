@@ -1,2 +1,25 @@
-<%= render 'form',  user: @user%>
-<span class="alternative-user-action">Already have an account? <%= link_to "Log In", new_session_url %></span>
+<div class="user-page">
+  <h1>Sign Up</h1>
+    <form action="<%= users_url %>" method="POST">
+      <div class="form-group">
+
+      <%= csrf_token %>
+
+      <label>Username
+        <input class="form-control" type="text" name="user[username]" value="<%= @user.username %>">
+      <label>
+
+      <br>
+
+      <label>Password
+        <input class="form-control" type="password" name="user[password]" value="<%= @user.password %>">
+      <label>
+
+      <br>
+
+      <p><button type="submit" id="create-account" class="btn btn-default">Create Account</button></p>
+    </div>
+  </form>
+
+  <span class="alternative-user-action">Already have an account? <%= link_to "Log In", new_session_url %></span>
+</div>

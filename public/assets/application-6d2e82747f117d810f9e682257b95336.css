@@ -1,3 +1,346 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+
+ */
+
+@import "bootstrap";
+
+/* Backbone-specific CSS below */
+
+body, html {
+  height: 100%;
+}
+
+#logout-link .btn {
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
+#logout-link .btn:hover {
+  color: black;
+}
+
+form .btn-default {
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
+form .form-control {
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
+form label {
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
+.loading-text {
+  text-align: center;
+  font-weight: lighter;
+  color: rgba( 0, 0, 0, .7);
+}
+
+.feed-loading-page h1 {
+  margin-top: 30%;
+}
+
+/* Sign In / Sign Up forms */
+
+div#landing-page h1 {
+  font-size: 72px;
+  text-align: center;
+  font-weight: lighter;
+}
+
+div#landing-page h3 {
+  text-align: center;
+  font-weight: lighter;
+  margin-bottom: 3%;
+}
+
+span#landing-image {
+  margin-left: 3%;
+}
+
+div.user-page {
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.user-page h1 {
+  font-weight: lighter;
+}
+
+span a {
+  color: rgba( 0, 0, 0, 0.53 );
+  text-decoration: underline;
+}
+
+span a:hover {
+  color: black;
+}
+
+span.alternative-user-action {
+  font-weight: 200;
+}
+
+.user-page label {
+  font-decoration: none;
+  font-weight: lighter;
+}
+
+.btn {
+  color: rgba( 0, 0, 0, 0.53 );
+  background-color: #EDEDE1;
+}
+
+.btn a {
+  text-decoration: none;
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
+
+/* Side-menu div */
+
+div#menu {
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #EDEDE1;
+  float: left;
+  height: 100%;
+}
+
+div.feed-item {
+  width: 85%;
+  margin-bottom: 20px;
+  padding-left: 8px;
+  transition: border-color .3s ease-in-out;
+  -webkit-transition: border-color .3s ease-in-out;
+  border-left: 4px solid transparent;
+}
+
+div.feed-item:hover {
+  border-left-color: rgba( 0, 0, 0, 0.45 );
+  cursor: pointer;
+}
+
+div.feed-item-container {
+  transition: background-color .3s ease-in-out;
+  -webkit-transition: background-color .3s ease-in-out;
+}
+
+div.feed-item-container:hover {
+  background-color: rgba( 0, 0, 0, 0.1);
+}
+
+.selected-feed {
+  background-color: rgba( 0, 0, 0, 0.1);
+}
+
+div.feed-item-title {
+  font-size: 14px;
+  font-weight: 200;
+  width: 85%;
+  height: 18px;
+  padding-bottom: 3px;
+  overflow: hidden;
+}
+
+div.feed-item-title:hover {
+  text-decoration: underline;
+  color: black;
+}
+
+span.feed-item-description {
+  font-size: 11px;
+}
+
+div.unread-entry-count {
+  padding-right: 4%;
+  float: right;
+  font-size: 12px;
+}
+
+.glyphicon:hover {
+  cursor: pointer;
+}
+
+div#feed-list {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding-top: 5%;
+  color: rgba( 0, 0, 0, 0.53 );
+  overflow: auto;
+  height: 70%;
+}
+
+div#feed-list::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 3px;
+}
+
+div#feed-list::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+h1#welcome {
+  font-weight: lighter;
+  text-align: center;
+  color: rgba( 0, 0, 0, .7);
+}
+
+#logout-btn {
+  position: relative;
+  margin-left: 33%;
+  margin-top: 15%;
+}
+
+#logout-btn a {
+  text-decoration: none;
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
+form#new-feed-form {
+  font-weight: 200;
+  margin-top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+}
+
+/* Main content div */
+
+div#content {
+  padding-left: 0px;
+  padding-right: 0px;
+  height: 100%;
+  overflow: scroll;
+}
+
+div#feed-header {
+
+  position: fixed;
+  background: white;
+  overflow: hidden;
+  width: 100%;
+  top: 0;
+  padding-left: 7.5%;
+  border-bottom: 1px solid black;
+}
+
+#feed-header h1 {
+  font-weight: lighter;
+  color: rgba( 0, 0, 0, .7);
+}
+
+#feed-header h4 {
+  font-weight: 200;
+  color: rgba( 0, 0, 0, .7);
+}
+
+div.feed-entry-bar {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-left: 10%;
+  padding-right: 4%;
+  font-weight: 200;
+  font-size: 14px;
+  /*height: 26px;*/
+  width: 100%;
+  color: rgba( 0, 0, 0, 1 );
+  border-bottom: 1px solid #EFEFEF;
+  overflow: hidden;
+}
+
+span.feed-entry-bar-description {
+  width: 85%;
+}
+
+div.feed-entry-bar:hover {
+  background-color: rgba( 0, 0, 0, 0.15 );
+  cursor: pointer;
+}
+
+div.feed-entry-bar-selected {
+  background-color: rgba( 0, 0, 0, 0.15 );
+}
+
+span.feed-pubdate {
+  font-weight: 200;
+  float: right;
+  padding-left: 5%;
+  padding-right: 3%;
+}
+
+div.feed-entry-description {
+  display: none;
+}
+
+div.feed-entry-encoded-description {
+  border-top: 1px solid;
+  text-align: center;
+  padding-top: 1.5%;
+  margin-bottom: 1.5%;
+}
+
+#content #entry-list {
+  padding-top: 70px;
+}
+
+div#content::-webkit-scrollbar {
+  display: none;
+}
+
+.feed-entry-hidden {
+  display: none;
+}
+
+.spin {
+  -webkit-animation: spin 2s infinite linear;
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
@@ -5,6 +348,7 @@
  */
 
 /*! normalize.css v3.0.0 | MIT License | git.io/normalize */
+
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
