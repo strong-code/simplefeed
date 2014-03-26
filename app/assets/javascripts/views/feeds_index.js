@@ -3,7 +3,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   template: JST['feeds/index'],
 
   initialize: function() {
-    this.listenTo(this.collection, "sync add remove", this.render);
+    this.listenTo(this.collection, "sync remove", this.render);
   },
 
   events: {
@@ -36,11 +36,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     var elem = $(e.currentTarget)
     elem.toggleClass("spin");
     var that = this;
-    this.collection.get(feedId).fetch({
-      success: function() {
-        that.render();
-      }
-    });
+    this.collection.get(feedId).fetch();
   },
 
   deleteFeed: function(e) {
