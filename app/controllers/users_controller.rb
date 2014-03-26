@@ -38,7 +38,7 @@ class UsersController < ApplicationController
       @feeds.each { |f| f.reload }
 
       respond_to do |format|
-        format.html { render :show }
+        format.html { render :feed_loading_page }
         format.json { render :json => @user.as_json}
       end
     end

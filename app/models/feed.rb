@@ -45,8 +45,14 @@ class Feed < ActiveRecord::Base
 
   #reload feed and fetch new entries only for current user
   def reload
-    feed_data = SimpleRSS.parse(open(self.url))
-    existing_entry_links = self.entries.pluck(:link).sort
+    begin
+      feed_data = SimpleRSS.parse(open(self.url))
+      existing_entry_links = self.entries.pluck(:link).sort
+    rescue => e
+      self.errors.add(:base, "Problem reloading feed, please try again.")
+      return self
+    end
+
 
     feed_data.entries.each do |entry_data|
       unless existing_entry_links.include?(entry_data.link)

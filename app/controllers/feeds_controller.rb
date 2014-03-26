@@ -5,7 +5,7 @@ class FeedsController < ApplicationController
     @user.feeds.each { |f| f.reload }
 
     respond_to do |format|
-      format.html { redirect_to user_url(@user) }
+      #format.html { redirect_to user_url(@user) }
       format.json { render :json => @user.feeds.to_json(methods: :get_unread_entry_count, include: :entries) }
     end
   end

@@ -3,17 +3,22 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   template: JST['feeds/index'],
 
   initialize: function() {
-    this.listenTo(this.collection, "sync remove", this.render);
+    this.listenTo(this.collection, "sync remove", this.render(null));
   },
 
   events: {
     "click .glyphicon-trash" : "deleteFeed",
     "click .glyphicon-refresh" : "refreshFeed",
     "click .input-group-btn" : "addFeed",
-    "click .feed-item-title" : "showFeed"
+    "click .feed-item-container" : "showFeed"
   },
 
   render: function() {
+    var currentFeed = $(location).attr('hash');
+    if (currentFeed !== "" || currentFeed !== undefined) {
+      var feedId = /\/feeds\/(\d*)$/.exec(currentFeed);
+      $('#container-'+currentFeed[1]).toggleClass('selected-feed');
+    }
     var renderedContent;
     renderedContent = this.template({
       feeds: this.collection
@@ -36,7 +41,11 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     var elem = $(e.currentTarget)
     elem.toggleClass("spin");
     var that = this;
-    this.collection.get(feedId).fetch();
+    this.collection.get(feedId).fetch({
+      success: function() {
+        elem.toggleClass('spin');
+      }
+    });
   },
 
   deleteFeed: function(e) {
@@ -50,6 +59,11 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   },
 
   showFeed: function(e) {
+    //ignore refresh/trash icon clicks - they are their own thing
+    if ($(e.target).hasClass('glyphicon')) {
+      return
+    }
+
     var feedId = $(e.currentTarget).data('id');
     $('.selected-feed').toggleClass('selected-feed');
     $('#container-'+feedId).toggleClass('selected-feed');
