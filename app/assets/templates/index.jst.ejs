@@ -1,0 +1,13 @@
+<h1 class="no-entry-selected-view">
+<% if (feeds.length === 0) { %>
+  You don't currently have any feeds. Try adding one over on the left.
+  <% } else { %>
+    You currently have <strong><%= feeds.length %></strong> feeds consisting of <strong><%= totalUnread %></strong> unread items.
+    <br><br>
+    <% if (totalUnread > 0) { %>
+      <em>Better get to reading...</em>
+    <% } else { %>
+      <em> You little bookworm ;) </em>
+    <% } %>
+  <% } %>
+</h1>

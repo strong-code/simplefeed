@@ -12,6 +12,11 @@ SimpleFeed.Routers.Router = Backbone.Router.extend({
 
   index: function() {
     this.$content.html('');
+
+    var indexView = new SimpleFeed.Views.Index({
+      collection: this.feeds
+    });
+    this._swapView(indexView);
   },
 
   showFeed: function(id) {

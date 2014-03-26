@@ -1,9 +1,9 @@
 SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
 
-  template: JST['feeds/index'],
+  template: JST['feeds/feeds_index'],
 
   initialize: function() {
-    this.listenTo(this.collection, "sync remove", this.render(null));
+    this.listenTo(this.collection, "sync remove", this.render);
   },
 
   events: {
@@ -17,7 +17,9 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     var currentFeed = $(location).attr('hash');
     if (currentFeed !== "" || currentFeed !== undefined) {
       var feedId = /\/feeds\/(\d*)$/.exec(currentFeed);
-      $('#container-'+currentFeed[1]).toggleClass('selected-feed');
+      if (feedId !== null) {
+        $('#container-'+feedId[1]).toggleClass('selected-feed');
+      }
     }
     var renderedContent;
     renderedContent = this.template({
@@ -56,6 +58,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     var feed = this.collection.get(feedId);
     feed.destroy({url: '/feeds/'+feedId}, {wait: true});
     this.collection.remove(feedId)
+    window.location.href = "#/";
   },
 
   showFeed: function(e) {

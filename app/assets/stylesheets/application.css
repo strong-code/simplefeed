@@ -16,7 +16,7 @@
 
 /* Backbone-specific CSS below */
 
-body, html {
+html, body {
   height: 100%;
 }
 
@@ -118,6 +118,15 @@ div#menu {
   background-color: #EDEDE1;
   float: left;
   height: 100%;
+}
+
+span.full-screen {
+  float: right;
+  border: 1px solid;
+  border-radius: 4px;
+  margin-right: 4%;
+  margin-top: 8%;
+  padding: 1%;
 }
 
 div.feed-item {
@@ -238,6 +247,12 @@ div#feed-header {
   top: 0;
   padding-left: 7.5%;
   border-bottom: 1px solid black;
+}
+
+h1.no-entry-selected-view {
+  margin-top: 25%;
+  text-align: center;
+  font-weight: lighter;
 }
 
 #feed-header h1 {
