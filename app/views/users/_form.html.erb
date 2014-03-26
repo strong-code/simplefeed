@@ -1,8 +1,6 @@
-<% action = (@user.persisted? ? user_url(@user) : users_url) %>
-<% button_text = (@user.persisted? ? "Log In" : "Create Account") %>
-<div class="col-xs-4 col-xs-offset-4">
-  <h1><%= button_text %></h1>
-  <form action="<%= action %>" method="POST">
+<div class="col-xs-4 col-xs-offset-4 user-page">
+  <h1>Sign Up</h1>
+  <form action="<%= users_url %>" method="POST">
     <div class="form-group">
 
     <%= csrf_token %>
@@ -19,6 +17,6 @@
 
     <br>
 
-    <p><button type="submit" class="btn btn-primary">Create Account</button></p>
+    <p><button type="submit" id="create-account" class="btn btn-default">Create Account</button></p>
   </form>
 </div>

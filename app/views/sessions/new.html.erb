@@ -1,4 +1,4 @@
-<div class="col-xs-4 col-xs-offset-4">
+<div class="col-xs-4 col-xs-offset-4 user-page">
   <h1>Sign In</h1>
     <form action="<%= session_url %>" method="POST">
       <div class="form-group">
@@ -17,22 +17,29 @@
 
       <br>
 
-      <button type="submit" id="sign-in" class="btn btn-primary">Sign In</button>
+      <button type="submit" id="sign-in" class="btn btn-default">Sign In</button>
 
-      <button id="demo-user" class="btn btn-primary">Demo User</button>
+      <button id="demo-user" class="btn btn-default">Demo User</button>
       </div>
     </form>
 
-  Don't have an account? <%= link_to "Create one", new_user_url %>
+  <span class="alternative-user-action">Don't have an account? <%= link_to "Create one", new_user_url %></span>
 
 </div>
 
 
 <script>
-$('#demo-user').on("click", function(event) {
-  event.preventDefault();
-  $('#username').val('TestUser');
-  $('#password').val('password');
-  $('#sign-in').click();
-})
+  $('#demo-user').on("click", function(event) {
+    event.preventDefault();
+    $('#username').val('TestUser');
+    $('#password').val('password');
+    $('#sign-in').click();
+  });
+
+  $('#sign-in').on('click', function(event) {
+    $header = $('<h1 class="loading-text">Please wait while we load your RSS feeds...</h1>');
+    $icon = $('<h3 class="loading-text"><div class="glyphicon glyphicon-refresh spin"></div></h3>');
+    $face = $('<h2 class="loading-text">:^)</h2>');
+    $('.user-page').html('').append($header).append($icon).append($face);
+  })
 </script>

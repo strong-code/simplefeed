@@ -11,14 +11,14 @@
 
   <% if current_user %>
     <script>
-      var username = "<%= current_user.username %>";
+      var currentUsername = "<%= current_user.username %>";
     </script>
   <% end %>
-
-    <div id="menu" class="col-xs-3 col-xs-offset-0"></div>
-
-    <div id="content" class="col-xs-9">
+    <div id="menu" class="col-xs-3 col-xs-offset-0">
       <%= yield %>
+    </div>
+    <div id="content" class="col-xs-9">
+      <h1>landing page here</h1>
     </div>
 
 </body>

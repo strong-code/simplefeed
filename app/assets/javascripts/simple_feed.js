@@ -7,7 +7,10 @@ window.SimpleFeed = {
     var $content = $("#content");
     var $menu = $("#menu");
     var feeds = new SimpleFeed.Collections.Feeds();
-    var feedsIndexView = new SimpleFeed.Views.FeedsIndex({collection: feeds, el: $menu});
+    if (currentUsername) {
+      $content.html('');
+      var feedsIndexView = new SimpleFeed.Views.FeedsIndex({collection: feeds, el: $menu});
+    }
 
     feeds.fetch({
       success: function() {

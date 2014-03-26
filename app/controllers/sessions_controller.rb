@@ -16,9 +16,9 @@ class SessionsController < ApplicationController
       login!(@user)
       redirect_to user_url(@user) + "/#"
     else
-      flash.now[:errors] = ['username and password do not match!']
+      flash[:errors] = ['username and password do not match!']
       @user = User.new
-      render :new
+      redirect_to "/"
     end
   end
 

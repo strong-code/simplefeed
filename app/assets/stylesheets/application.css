@@ -20,6 +20,18 @@ body, html {
   height: 100%;
 }
 
+form .btn-default {
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
+form .form-control {
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
+form label {
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
 .loading-text {
   text-align: center;
   font-weight: lighter;
@@ -29,6 +41,50 @@ body, html {
 .feed-loading-page h1 {
   margin-top: 30%;
 }
+
+/* Sign In / Sign Up forms */
+
+div.user-page {
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.user-page h1 {
+  font-weight: lighter;
+}
+
+span a {
+  color: rgba( 0, 0, 0, 0.53 );
+  text-decoration: underline;
+}
+
+span a:hover {
+  color: black;
+}
+
+span.alternative-user-action {
+  font-weight: 200;
+}
+
+.user-page label {
+  font-decoration: none;
+  font-weight: lighter;
+}
+
+.btn {
+  color: rgba( 0, 0, 0, 0.53 );
+  background-color: #EDEDE1;
+}
+
+.btn a {
+  text-decoration: none;
+  color: rgba( 0, 0, 0, 0.53 );
+}
+
 
 /* Side-menu div */
 
