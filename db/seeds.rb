@@ -10,4 +10,7 @@ testuser = User.create!(username: "TestUser", password: "password")
 
 #create some default feeds
 Feed.find_or_create("http://www.npr.org/rss/rss.php?id=1001", testuser.id)
-Feed.find_or_create("http://lorem-rss.herokuapp.com/feed?unit=second&interval=5", testuser.id)
+Feed.find_or_create("http://kotaku.com/vip.xml", testuser.id)
+Feed.find_or_create("http://www.theverge.com/rss/frontpage", testuser.id)
+Feed.find_or_create("http://techspec.tumblr.com/rss", testuser.id)
+Feed.find_or_create("https://news.ycombinator.com/rss", testuser.id)
