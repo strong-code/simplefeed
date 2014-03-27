@@ -2,6 +2,7 @@ class EntriesController < ApplicationController
 
   def update
     entry = Entry.find_by_link(entry_params[:link])
+    entry.read = true
 
     if entry.save
       render :json => entry.to_json
