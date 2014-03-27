@@ -6,10 +6,7 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
   },
 
   events: {
-    "click .feed-entry-bar" : function(e) {
-      this.showOrHideEntry(e);
-      this.markEntryAsRead(e);
-    },
+    "click .feed-entry-bar" : "showOrHideEntry"
   },
 
   render: function() {
@@ -21,7 +18,12 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
   },
 
   showOrHideEntry: function(e) {
-    $(e.currentTarget).toggleClass('feed-entry-bar-selected');
+    $elem = $(e.currentTarget);
+    $elem.toggleClass('feed-entry-bar-selected');
+    if (!$elem.hasClass('entry-read')) {
+      $elem.toggleClass('entry-read');
+      this.markEntryAsRead(e);
+    }
     //this is necessary to work for edge cases on wonky RSS feeds
     $(e.currentTarget.children[2]).toggleClass('feed-entry-hidden');
     var derf = $(e.currentTarget.children[1]).text();
@@ -31,6 +33,9 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
   markEntryAsRead: function(e) {
     var entryCollection = this.model.entries();
     var entry = entryCollection.get($(e.currentTarget).data('id'));
-
+    entry.set('read', 'true');
+    entry.save();
+    $entryCount = $('.feed-'+entry.get('feed_id')+'-unread-entry-count');
+    $entryCount.text(parseInt($entryCount.text()) - 1);
   }
 });

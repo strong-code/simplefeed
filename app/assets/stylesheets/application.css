@@ -279,6 +279,10 @@ div.feed-entry-bar {
   overflow: hidden;
 }
 
+div.entry-read {
+  color: rgba( 0, 0, 0, 0.3 );
+}
+
 span.feed-entry-bar-description {
   width: 85%;
 }

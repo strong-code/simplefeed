@@ -8,7 +8,7 @@
 <div id="feed-list">
     <% feeds.each(function(feed) { %>
       <div class="feed-item-container" data-id="<%= feed.id %>" id="container-<%= feed.id %>">
-        <div class="unread-entry-count feed-<%=feed.id%>-unread-entry-count">(<%= feed.get('unread') %>)</div>
+        <div class="unread-entry-count feed-<%=feed.id%>-unread-entry-count"><%= feed.get('unread') %></div>
         <div class="feed-item">
           <div data-id="<%= feed.id%>" class="feed-item-title"><%= feed.get('title') %></div>
           <span data-id="<%= feed.id %>" class="glyphicon glyphicon-refresh"></span>
