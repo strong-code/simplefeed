@@ -25,9 +25,13 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
       this.markEntryAsRead(e);
     }
     //this is necessary to work for edge cases on wonky RSS feeds
+    // Grab the content as string, inject back into unhidden elem
+    // and color the text black for readability
     $(e.currentTarget.children[2]).toggleClass('feed-entry-hidden');
     var derf = $(e.currentTarget.children[1]).text();
-    $(e.currentTarget.children[2].children[0]).html(derf);
+    $injectable = $(e.currentTarget.children[2].children[0]);
+    $injectable.html(derf);
+    $injectable.css('color', 'black');
   },
 
   markEntryAsRead: function(e) {
