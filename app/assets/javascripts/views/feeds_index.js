@@ -67,21 +67,9 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     if ($(e.target).hasClass('glyphicon')) {
       return
     }
-
     var feedId = $(e.currentTarget).data('id');
     $('.selected-feed').toggleClass('selected-feed');
     $('#container-'+feedId).toggleClass('selected-feed');
     window.location.href = "#/feeds/"+feedId;
-  },
-
-  markAllEntriesRead: function(e) {
-    var feedId = $(e.currentTarget.parentElement).data('id');
-    var feed = this.collection.get(feedId);
-    feed.entries().each(function(entry) {
-      entry.set({'read' : true})
-      entry.save();
-    });
-    feed.fetch();
   }
-
 });

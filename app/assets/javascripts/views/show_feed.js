@@ -2,13 +2,15 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
   template: JST['feeds/show'],
 
   initialize: function() {
-    this.listenTo(this.model.entries(), "add sync", this.render);
+    this.listenTo(this.model.entries(), "add", this.render);
   },
 
   events: {
     "click .feed-entry-bar" : "showOrHideEntry",
     "keyup #entry-search-box" : "searchTitles",
-    "click #reset-feed" : "resetFeedEntries"
+    "click #reset-feed" : "resetFeedEntries",
+    "click span#feed-title" : "resetFeedEntries",
+    "click #mark-all-read" : "markAllAsRead"
   },
 
   render: function() {
@@ -36,6 +38,7 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
     $injectable.css('color', 'black');
   },
 
+  //need to supress the save emit
   markEntryAsRead: function(e) {
     var entryCollection = this.model.entries();
     var entry = entryCollection.get($(e.currentTarget).data('id'));
@@ -57,7 +60,20 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
   },
 
   resetFeedEntries: function() {
-    this.model.entries().reset(this.entryCache);
+    if (this.entryCache) {
+      this.model.entries().reset(this.entryCache);
+      this.render();
+    }
+  },
+
+  markAllAsRead: function(e) {
+    var entryId = $(e.currentTarget).data('id');
+    $('.feed-'+entryId+'-unread-entry-count').text("0");
+    this.model.entries().each(function(entry) {
+      entry.set({'read' : true});
+      entry.save();
+    });
+
     this.render();
   }
 });
