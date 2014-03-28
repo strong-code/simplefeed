@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout!
-    redirect_to new_session_url
+    redirect_to "/"
   end
 
   def user_params
