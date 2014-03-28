@@ -5,9 +5,9 @@
     You currently have <strong><%= feeds.length %></strong> feeds consisting of <strong><%= totalUnread %></strong> unread items.
     <br><br>
     <% if (totalUnread > 0) { %>
-      <em>Better get to reading...</em>
+      <em><%= motivational %></em>
     <% } else { %>
-      <em> You little bookworm ;) </em>
+      <em> <%= congratulatory %> </em>
     <% } %>
   <% } %>
 </h1>
