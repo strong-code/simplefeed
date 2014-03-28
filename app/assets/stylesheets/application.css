@@ -120,6 +120,10 @@ div#menu {
   float: left;
 }
 
+span.alert {
+  margin-left: 13%;
+}
+
 span.full-screen {
   float: right;
   border: 1px solid;

@@ -35,6 +35,7 @@ gem 'serialize_json-rails', '~> 0.0.1'
 gem 'backbone-on-rails'
 gem 'bootstrap-sass'
 gem 'simple-rss'
+gem 'thin', '~> 1.6.2'
 
 group :production do
   gem 'rails_12factor'

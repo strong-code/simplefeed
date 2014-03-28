@@ -15,6 +15,11 @@
     </script>
   <% end %>
     <div id="menu" class="col-xs-3 col-xs-offset-0">
+      <% if flash[:errors] %>
+        <% flash[:errors].each do |error| %>
+          <span class="alert alert-danger"><%= error %></span>
+        <% end %>
+      <% end %>
       <%= yield %>
     </div>
 

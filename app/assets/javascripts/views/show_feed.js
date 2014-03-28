@@ -50,7 +50,7 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
 
   searchTitles: function(e) {
     e.preventDefault();
-    if (e.keyCode == 13) {
+    if (e.keyCode == 13 && !this.entryCache) {
       this.entryCache = this.model.get('entries').slice(0);
       var searchTerm = $('#entry-search-box').val();
       var results = this.model.entries().findInTitles(searchTerm);
@@ -63,17 +63,19 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
     if (this.entryCache) {
       this.model.entries().reset(this.entryCache);
       this.render();
+      this.entryCache = null;
     }
   },
 
   markAllAsRead: function(e) {
-    var entryId = $(e.currentTarget).data('id');
-    $('.feed-'+entryId+'-unread-entry-count').text("0");
-    this.model.entries().each(function(entry) {
-      entry.set({'read' : true});
-      entry.save();
-    });
-
+    if (result = window.confirm('Are you SURE you want to mark all entries as read?')) {
+      var entryId = $(e.currentTarget).data('id');
+      $('.feed-'+entryId+'-unread-entry-count').text("0");
+      this.model.entries().each(function(entry) {
+        entry.set({'read' : true});
+        entry.save();
+      });
+    }
     this.render();
   }
 });
