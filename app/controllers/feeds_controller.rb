@@ -23,7 +23,7 @@ class FeedsController < ApplicationController
       flash[:errors] = ["Unable to parse RSS/Atom feed from the supplied URL"]
       respond_to do |format|
         format.html { redirect_to user_url(@user) }
-        format.json { render :json => flash[:errors] }
+        format.json { render :json => 422 }
       end
     end
   end

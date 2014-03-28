@@ -10,23 +10,25 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     "click .glyphicon-trash" : "deleteFeed",
     "click .glyphicon-refresh" : "refreshFeed",
     "click .input-group-btn" : "addFeed",
-    "click .feed-item-container" : "showFeed"
+    "click .feed-item-container" : "showFeed",
+    "click .unread-entry-count" : "markAllEntriesRead"
   },
 
   render: function() {
-    var currentFeed = $(location).attr('hash');
-    if (currentFeed !== "" || currentFeed !== undefined) {
-      var feedId = /\/feeds\/(\d*)$/.exec(currentFeed);
-      if (feedId !== null && feedId !== null) {
-        $('#container-'+feedId[1]).toggleClass('selected-feed');
-      }
-    }
+    // var currentFeed = $(location).attr('hash');
+
     var renderedContent;
     renderedContent = this.template({
       feeds: this.collection
     });
 
     this.$el.html(renderedContent);
+
+    var feedId = /\/feeds\/(\d*)$/.exec($(location).attr('hash'));
+    var $elem = $('#container-'+feedId[1]);
+    if (!$elem.hasClass('selected-feed')) {
+       $elem.toggleClass('selected-feed');
+    }
   },
 
   addFeed: function(e) {
@@ -71,6 +73,10 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     $('.selected-feed').toggleClass('selected-feed');
     $('#container-'+feedId).toggleClass('selected-feed');
     window.location.href = "#/feeds/"+feedId;
+  },
+
+  markAllEntriesRead: function(e) {
+    debugger
   }
 
 });

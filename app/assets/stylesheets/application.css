@@ -180,6 +180,11 @@ div.unread-entry-count {
   font-size: 12px;
 }
 
+div.unread-entry-count:hover {
+  text-decoration: line-through;
+  cursor: pointer;
+}
+
 .glyphicon:hover {
   cursor: pointer;
 }
@@ -262,7 +267,7 @@ button#reset-feed {
   height: 25px;
   line-height: 0px;
   margin-top: 0.5%;
-  margin-left: 3%;
+  margin-left: 2.5%;
 }
 
 h1.no-entry-selected-view {
