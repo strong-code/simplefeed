@@ -23,6 +23,7 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     var feedId = /\/feeds\/(\d*)$/.exec($(location).attr('hash'));
+    debugger
     var $elem = $('#container-'+feedId[1]);
     if (!$elem.hasClass('selected-feed')) {
        $elem.toggleClass('selected-feed');
