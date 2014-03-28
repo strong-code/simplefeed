@@ -15,8 +15,6 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   },
 
   render: function() {
-    // var currentFeed = $(location).attr('hash');
-
     var renderedContent;
     renderedContent = this.template({
       feeds: this.collection
@@ -76,7 +74,13 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
   },
 
   markAllEntriesRead: function(e) {
-    debugger
+    var feedId = $(e.currentTarget.parentElement).data('id');
+    var feed = this.collection.get(feedId);
+    feed.entries().each(function(entry) {
+      entry.set({'read' : true})
+      entry.save();
+    });
+    feed.fetch();
   }
 
 });

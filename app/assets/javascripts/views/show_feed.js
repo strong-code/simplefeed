@@ -2,7 +2,7 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
   template: JST['feeds/show'],
 
   initialize: function() {
-    this.listenTo(this.model.entries(), "add", this.render);
+    this.listenTo(this.model.entries(), "add sync", this.render);
   },
 
   events: {
