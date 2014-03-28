@@ -113,11 +113,11 @@ span.alternative-user-action {
 /* Side-menu div */
 
 div#menu {
+  height: 100%;
   padding-left: 0px;
   padding-right: 0px;
   background-color: #EDEDE1;
   float: left;
-  height: 100%;
 }
 
 span.full-screen {
@@ -125,7 +125,7 @@ span.full-screen {
   border: 1px solid;
   border-radius: 4px;
   margin-right: 4%;
-  margin-top: 8%;
+  margin-top: 7%;
   padding: 1%;
 }
 
@@ -247,6 +247,22 @@ div#feed-header {
   top: 0;
   padding-left: 7.5%;
   border-bottom: 1px solid black;
+}
+
+input#entry-search-box {
+  height: 25px;
+  font-size: 14px;
+  font-weight: 200;
+  margin-left: 2.5%;
+}
+
+button#reset-feed {
+  font-size: 12px;
+  font-weight: 200;
+  height: 25px;
+  line-height: 0px;
+  margin-top: 0.5%;
+  margin-left: 3%;
 }
 
 h1.no-entry-selected-view {

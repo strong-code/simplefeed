@@ -11,5 +11,18 @@ SimpleFeed.Collections.FeedEntries = Backbone.Collection.extend({
 
   url: function() {
     return '/feeds/' + this.feed.id + "/entries";
+  },
+
+  findInTitles: function(searchString) {
+    var keywords = searchString.split(" ");
+    var results = [];
+    this.each(function(entry) {
+      for (var i=0;i<keywords.length;i++) {
+        if (entry.get('title').indexOf(keywords[i]) != -1) {
+          results.push(entry);
+        }
+      }
+    });
+    return results;
   }
 });

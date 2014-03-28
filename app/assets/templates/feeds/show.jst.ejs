@@ -1,5 +1,11 @@
 <div id="feed-header">
-  <h1><%= feed.get('title') %></h1>
+  <h1>
+    <%= feed.get('title') %>
+    <input type="text" id="entry-search-box" placeholder="search">
+    <% if (feed.entries().length < feed.get('unread')) { %>
+      <button class="btn btn-default" id="reset-feed">Show All</button>
+    <% } %>
+  </h1>
 </div>
 
 <div id="row"></div>

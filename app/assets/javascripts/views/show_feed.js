@@ -6,7 +6,9 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
   },
 
   events: {
-    "click .feed-entry-bar" : "showOrHideEntry"
+    "click .feed-entry-bar" : "showOrHideEntry",
+    "keyup #entry-search-box" : "searchTitles",
+    "click #reset-feed" : "resetFeedEntries"
   },
 
   render: function() {
@@ -41,5 +43,21 @@ SimpleFeed.Views.ShowFeed = Backbone.View.extend({
     entry.save();
     $entryCount = $('.feed-'+entry.get('feed_id')+'-unread-entry-count');
     $entryCount.text(parseInt($entryCount.text()) - 1);
+  },
+
+  searchTitles: function(e) {
+    e.preventDefault();
+    if (e.keyCode == 13) {
+      this.entryCache = this.model.get('entries').slice(0);
+      var searchTerm = $('#entry-search-box').val();
+      var results = this.model.entries().findInTitles(searchTerm);
+      this.model.entries().set(results, {add: false})
+      this.render();
+    }
+  },
+
+  resetFeedEntries: function() {
+    this.model.entries().reset(this.entryCache);
+    this.render();
   }
 });
