@@ -21,13 +21,6 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     });
 
     this.$el.html(renderedContent);
-
-    // var feedId = /\/feeds\/(\d*)$/.exec($(location).attr('hash'));
-//     debugger
-//     var $elem = $('#container-'+feedId[1]);
-//     if (!$elem.hasClass('selected-feed')) {
-//        $elem.toggleClass('selected-feed');
-//     }
   },
 
   addFeed: function(e) {
@@ -36,7 +29,15 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     $('#submit-new-feed-icon').toggleClass('spin');
     e.preventDefault();
     var url = $('input.form-control').val();
-    var newFeed = this.collection.create({url: url});
+    var that = this;
+    var newFeed = this.collection.create({url: url},{
+      error: function() {
+        $('#feed-url').val('');
+        $('#error-box').html('<span class="alert alert-danger">Unable to parse feed</span>');
+        $('#submit-new-feed-icon').toggleClass('glyphicon-plus-sign');
+        $('#submit-new-feed-icon').toggleClass('spin');
+      }
+    });
   },
 
   refreshFeed: function(e) {
