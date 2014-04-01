@@ -29,7 +29,6 @@ SimpleFeed.Views.FeedsIndex = Backbone.View.extend({
     $('#submit-new-feed-icon').toggleClass('spin');
     e.preventDefault();
     var url = $('input.form-control').val();
-    var that = this;
     var newFeed = this.collection.create({url: url},{
       error: function() {
         $('#feed-url').val('');
