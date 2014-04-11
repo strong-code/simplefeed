@@ -194,7 +194,7 @@ div#feed-list {
   padding-top: 5%;
   color: rgba( 0, 0, 0, 0.53 );
   overflow: auto;
-  height: 70%;
+  max-height: 70%;
 }
 
 div#feed-list::-webkit-scrollbar {
@@ -217,7 +217,6 @@ h1#welcome {
 #logout-btn {
   position: relative;
   margin-left: 33%;
-  margin-top: 15%;
 }
 
 #logout-btn a {
@@ -227,7 +226,8 @@ h1#welcome {
 
 form#new-feed-form {
   font-weight: 200;
-  margin-top: 10%;
+  margin-top: 5%;
+	margin-bottom: 5%;
   margin-left: auto;
   margin-right: auto;
   width: 95%;
