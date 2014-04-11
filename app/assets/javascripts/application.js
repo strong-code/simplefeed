@@ -15,7 +15,6 @@
 //= require moment.min
 //= require turbolinks
 //= require simple_feed
-//= require bootstrap
 //= require underscore
 //= require backbone
 //= require_tree ../templates
