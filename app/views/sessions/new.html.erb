@@ -42,7 +42,6 @@
   $('#sign-in').on('click', function(event) {
     $header = $('<h1 class="loading-text">Please wait while we load your RSS feeds...</h1>');
     $icon = $('<h3 class="loading-text"><div class="glyphicon glyphicon-refresh spin"></div></h3>');
-    $face = $('<h2 class="loading-text">:^)</h2>');
-    $('.user-page').html('').append($header).append($icon).append($face);
+    $('.user-page').html('').append($header).append($icon);
   })
 </script>
